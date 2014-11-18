@@ -36,3 +36,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'mongoid'
+gem 'bson_ext'
+gem 'slim-rails'
+
+group  :test  do
+  gem 'rspec-rails'
+end
