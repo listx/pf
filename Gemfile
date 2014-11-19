@@ -39,6 +39,8 @@ gem 'spring',        group: :development
 gem 'mongoid'
 gem 'bson_ext'
 gem 'slim-rails'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group  :test  do
   gem 'rspec-rails'
