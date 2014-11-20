@@ -1,2 +1,9 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
+h1 Login
+= form_for(:session, url: login_path) do |f|
+  = f.label :username
+  = f.text_field :name
+  br
+  = f.label :password
+  = f.password_field :password
+  br
+  = f.submit "Login"
