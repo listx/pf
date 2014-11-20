@@ -1,14 +1,28 @@
-nav
-  ul.nav.nav-pills
-    li.active role="presentation"
-      a href="#" Home
-    li.active role="presentation"
-      a href="#" About
-    li.active role="presentation"
-      a href="#" Contact
-    - if logged_in?
-      li.active role="presentation"
-        = link_to "Logout", logout_path, method: :delete
-    - else
-      li.active role="presentation"
-        = link_to "Login", login_path
+nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      - if !logged_in?
+        button [
+          type="button" class="navbar-toggle collapsed"
+          data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar"
+          ]
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+    #navbar.navbar-collapse.collapse [
+        aria-expanded="false" style="height: 1px;"
+      ]
+      ul.nav.navbar-nav
+        li class="#{current_page?(root_url) && 'active'}"
+          = link_to "Home", root_url
+        li class="#{current_page?(about_path) && 'active'}"
+          = link_to "About", about_path
+        li class="#{current_page?(contact_path) && 'active'}"
+          = link_to "Contact", contact_path
+        li class="#{current_page?(logged_in? ? logout_path : login_path) && 'active'}"
+          - if logged_in?
+            = link_to "Logout", logout_path, method: :delete
+          - else
+            = link_to "Login", login_path
