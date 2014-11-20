@@ -16,5 +16,7 @@ html
     header
       = render 'layouts/navbar'
     section
+      - flash.each do |msg_type, msg|
+        .alert class="alert-#{msg_type}" = msg
       == yield
     footer

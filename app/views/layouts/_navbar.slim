@@ -6,5 +6,9 @@ nav
       a href="#" About
     li.active role="presentation"
       a href="#" Contact
-    li.active role="presentation"
-      = link_to "Login", login_path
+    - if logged_in?
+      li.active role="presentation"
+        = link_to "Logout", logout_path, method: :delete
+    - else
+      li.active role="presentation"
+        = link_to "Login", login_path
