@@ -14,16 +14,7 @@ html
     = csrf_meta_tags
   body
     header
-      nav
-        ul.nav.nav-pills
-          li.active role="presentation"
-            a href="#" Home
-          li.active role="presentation"
-            a href="#" About
-          li.active role="presentation"
-            a href="#" Contact
-          li.active role="presentation"
-            a href="#" Login
+      = render 'layouts/navbar'
     section
       == yield
     footer
