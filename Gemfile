@@ -41,6 +41,7 @@ gem 'bson_ext'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'bootstrap_form'
 
 group  :test  do
   gem 'rspec-rails'
