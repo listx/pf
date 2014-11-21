@@ -42,6 +42,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
+gem 'mongoid-paperclip'
 
 group  :test  do
   gem 'rspec-rails'
