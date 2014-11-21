@@ -5,7 +5,19 @@
 html
   body
     font-family: sans-serif
-    padding: 50px 0 0 0
+    font-size: 2em
+    // The top-padding here determines where the body content starts in the
+    // page; without it, the navbar will cover over the contents.
+    padding-top: 4em
+    header
+      nav
+        .container
+          text-align: right
+    section
+      .container
+        .login-form
+          padding: 0 40%
+          text-align: center
     footer.footer
       position: absolute
       bottom: 0

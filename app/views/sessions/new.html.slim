@@ -1,6 +1,6 @@
-h1 Login
-= bootstrap_form_for(:session, layout: :inline, url: login_path) do |f|
-  = f.text_field :name, placeholder: "Username", hide_label: true
-  = f.password_field :password, placeholder: "Password", hide_label: true
-  = f.form_group do
-    = f.submit "Login", class: "btn btn-success"
+.login-form
+  = bootstrap_form_for(:session, url: login_path) do |f|
+    = f.text_field :name, placeholder: "Username", hide_label: true
+    = f.password_field :password, placeholder: "Password", hide_label: true
+    = f.form_group do
+      = f.submit "Login", class: "btn btn-success"
