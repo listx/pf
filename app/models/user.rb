@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   # MongoDB/Mongoid requires this SecurePassword import for
   # 'has_secure_password' to work.
