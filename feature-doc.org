@@ -1,0 +1,116 @@
+#+TITLE: PORTFOLIO WEBSITE FEATURE DOC
+#+AUTHOR: Linus Arver
+#+STARTUP: indent showall
+
+* Introduction
+- This doc describes the "Portfolio" ("pf") website, which will be used as a way for users to create a professional portfolio website.
+- The key idea is to let users create 'notes' and 'attachments', and have the site 'render' the notes/attachments in a prettified way, into 'journals' that the visitor can read.
+- For now, the sole user will be myself (Linus!), and all the top-level pages on the site will reflect my own info.
+* Design goals
+- The site will be geared toward strangers/recruiters.
+- The most important information ('About me') etc, should be laid out in the center, and the element/link responsible for this should be very large.
+  - As we will be using 'journals' to create the traditional 'About me', 'Work', 'Contact' pages, these journals need to be *prominently displayed* in the center content section of the site.
+  - There will only be a handful of such important journals; we don't have to worry about there being too many large journals that the user has to navigate/scroll through.
+* Definitions
+** Personas
+*** Authors
+- These are regular users who can create and edit their own journals/notes/attachments.
+*** Public users (from the internet)
+** Access Control
+*** Authors
+- CRUD own journals/notes/attachments
+- read other journals/notes/attachments
+*** Public
+- read journals/notes/attachments
+* Features
+** Pages
+*** Site top-level
+**** Home
+- URI: =pf/=
+- This is the landing page of the siteroot, showing the journals based on priority order (set by the users who created them).
+- Since there is only 1 user (me), this means that we will list all of my journals, with the priority levels that I create; we can hard-code this for now.
+- For now, we will have a simple list of journals, one after the other, as plain links.
+  - Journals with the same priority level will get listed based on their priority integer value, with a higher number indicating a higher priority.
+  - Journals without a priority level will get listed in reverse chronological order (newest first).
+- However, we should strongly focus on prettifying this to look like, for example, how some media players display album art in a collection (the analogy here being 'album == journal').
+  - We can have a 'preview picture' or 'icon' field to a journal, and let the user modify it to suit their needs of previewing this journal (so that we can give some sort of visual 'identity' to each journal).
+**** Login/Logout
+- When not logged in, there will be a 'Login' link in the navbar.
+- When logged in, it will change to 'Logout'
+- It might make more sense to put this in a low-key/low-visibility area as it is purely for my own use. I.e., it does not make sense to expose 99% of the visitng population (public users/recruiters) to a big "LOGIN" link when they will have no use for it.
+*** Author interface
+**** Notes
+***** Create/Update/Delete Note
+- Authors can create/update/delete notes by either writing into a plaintext text box and clicking on "Save", or by uploading a plaintext file.
+- This file will be rendered through Markdown as an HTML file, which will then be saved and called when the note is viewed.
+- Updating a note involves making changes to the raw plaintext, not that rendered view version.
+***** List notes view
+- This is the notes view where *all notes* are listed.
+  - The notes will be listed with the newest items on top (reverse chronological order).
+- Each note will have an ID column showing the BSON::ObjectId of it.
+***** Single note view
+- A note can be viewed (remember, it is the output of Markdown that is saved and recalled when viewed).
+**** Attachments
+- These are treated the same way as notes; the only difference is that whereas notes are composed of text, attachments are composed of binary blobs.
+- Thus, 'viewing' of attachments can only be supported for browser-friendly filetypes, such as images and videos (but not, e.g., *.tar.xz compressed archive files).
+**** Journals
+***** Create/Update/Delete Journal
+- Journals are composed of notes and attachments.
+- You can think of notes and attachments as 'post-it' notes, and a journal as having some collection of these items.
+- For simplicity, we will call notes/attachments collectively as just 'notes'.
+- Authors can create a new journal by defining which notes are to be included in it, and in what order.
+  - For now, we will make this 1-dimensional --- the author can only define the linear sequence of notes; thus, the first note will be presented first, followed by the second, the third, etc.
+  - The 'transition' phase between consecutive notes can be spiced up with javascript libraries like jquery, but for now the default will be just placing each note in a linear HTML sequence.
+#+BEGIN_SRC
+<div id='note_1'>contents of note_1</div>
+<div id='note_2'>contents of note_2</div>
+<div id='note_3'>contents of note_3</div>
+<div id='note_4'>contents of note_4</div>
+...
+<div id='note_N'>contents of note_N</div>
+#+END_SRC
+***** List journals view
+- This is just like the siteroot, except that we just list all journals in the traditional 'rails' way.
+- The user can create/edit/delete journals as they see fit, and also change the priority of which journals gets displayed most prominently.
+***** Single journal view
+- A journal, when clicked on from the 'list journals view', will become 'full-screened' for presentation.
+*** Authentication
+- All users (and passwords!) are manually created offline.
+- This is a broken design as far as scaling above 1 user is concerned; but this is not our concern at this time.
+* Application Model
+- Note that all types are Mongoid types, not the usual ActiveRecord types.
+** Database Tables/Fields
+*** Note
+- =AUTHOR: USER_ID (FK)=
+  - since we're using MongoDB (via Mongoid) for this whole app, we dont need to actually define a 'user_id' field explicitly, as the relationship call methods ('has_many' and 'belongs_to') will create these FK fields for us automatically.
+- =DATE: TIMESTAMP=
+  - This field is also taken care of automatically by Mongoid when we do =include Mongoid::Timestamps=.
+- =NAME: String=
+  - The name of the note; useful but entirely *optional*.
+  - When we view a note by itself, and it does not have a name, we will simply display for this field the creation timestamp combined with its BSON::ObjectId.
+    - It's OK for notes to not have any titles --- as notes can be just paragraphs or unnamed poems even, it's entirely possible that they do not have a fitting 'name'.
+- =CONTENT: String=
+*** Attachment
+- The fields here essentially mirror the 'Note' model, except for 'type'.
+- =BINARY_TYPE: Integer=
+  - This integer is simply referencing the array index number of an array of hardcoded strings, called BINARY_TYPES (in =/config/constants.rb=), that describes all the supported filetypes: e.g., =["unknown", "jpg", "png", "gif", "mpeg", "mpg"]=
+	- Depending on the =BINARY_TYPE= number, our web app chooses the right way to display it on the screen (e.g., a picture type can obviously be presented inside an =<img>= tag, but not a movie).
+- =NAME: String=
+  - Once the file upload finishes, we will set this to the filename; the user can choose to rename it.
+- =CONTENT: BSON::Binary=
+*** Journal
+- =TITLE: String=
+  - All journals have a text title to go along with it.
+- =AVATAR: BSON::ObjectId=
+  - The avatar is an *IMAGE* file that the user can upload to act as the 'album cover' of the journal.
+- =PRIORITY: Integer=
+  - '0' is default; '0' denotes the lowest priority value.
+    - By definition, we *cannot allow negative values* here.
+  - Higher priorities have greater importance, and are shown first.
+  - Journals with equal priorities are sorted in alphabetical order.
+  - Journals with no priorities are sorted in reverse chronological order (newest first).
+**** Relationships
+- A user has many journals, and a journal has many notes/attachments.
+*** User
+- =NAME: String=
+- =PASSWORD_DIGEST: String=
