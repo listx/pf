@@ -7,4 +7,6 @@ class Journal
   has_many :attachments
 
   field :title, type: String
+  field :avatar, type: BSON::ObjectId
+  field :priority, type: Integer
 end
