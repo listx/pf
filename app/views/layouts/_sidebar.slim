@@ -1,0 +1,7 @@
+ul.nav.nav-sidebar
+  li class="#{current_page?(journals_path) && 'active'}"
+    = link_to 'Journals', journals_path
+  li class="#{current_page?(notes_path) && 'active'}"
+    = link_to 'Notes', notes_path
+  li class="#{current_page?(attachments_path) && 'active'}"
+    = link_to 'Attachments', attachments_path
