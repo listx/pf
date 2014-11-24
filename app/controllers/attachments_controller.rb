@@ -1,5 +1,6 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
 
   # GET /attachments
   # GET /attachments.json

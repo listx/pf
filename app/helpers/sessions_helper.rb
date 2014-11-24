@@ -23,4 +23,11 @@ module SessionsHelper
       @current_user
     end
   end
+
+  def logged_in_user
+    if !logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 end
