@@ -30,6 +30,7 @@ module Looseleaf
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper = false
+    config.generators.jbuilder = false
     config.sass.preferred_syntax = :sass
     config.time_zone = "Pacific Time (US & Canada)"
   end
