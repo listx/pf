@@ -1,23 +1,24 @@
-h1 Listing attachments
+- if !@attachments.empty?
+  h1 Listing attachments
 
-table
-  thead
-    tr
-      th Name
-      th Content
-      th
-      th
-      th
-
-  tbody
-    - @attachments.each do |attachment|
+  table
+    thead
       tr
-        td = attachment.name
-        td = attachment.content
-        td = link_to 'Show', attachment
-        td = link_to 'Edit', edit_attachment_path(attachment)
-        td = link_to 'Destroy', attachment, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Name
+        th Content
+        th
+        th
+        th
 
-br
+    tbody
+      - @attachments.each do |attachment|
+        tr
+          td = attachment.name
+          td = attachment.content
+          td = link_to 'Show', attachment
+          td = link_to 'Edit', edit_attachment_path(attachment)
+          td = link_to 'Destroy', attachment, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+  br
 
 = link_to 'New Attachment', new_attachment_path
