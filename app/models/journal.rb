@@ -6,7 +6,7 @@ class Journal
   has_many :notes
   has_many :attachments
 
-  field :title, type: String
+  field :name, type: String
   field :avatar, type: BSON::ObjectId
   field :priority, type: Integer
 end
