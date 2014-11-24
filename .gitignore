@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 
+*.html
 /vendor/bundle
