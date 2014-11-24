@@ -1,6 +1,10 @@
 .login-form
-  = bootstrap_form_for(:session, url: login_path) do |f|
+  = bootstrap_form_for(\
+      :session,
+      url: login_path,
+      html: {class: "form-login"}\
+      ) do |f|
     = f.text_field :name, placeholder: "Username", hide_label: true
     = f.password_field :password, placeholder: "Password", hide_label: true
     = f.form_group do
-      = f.submit "Login", class: "btn btn-success"
+      = f.submit "Log in", class: "btn btn-lg btn-primary btn-block"
