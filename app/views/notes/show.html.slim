@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @note.name
+p
+  strong Content:
+  = @note.content
+
+= link_to 'Edit', edit_note_path(@note)
+'|
+= link_to 'Back', notes_path

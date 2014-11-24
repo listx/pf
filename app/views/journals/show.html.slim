@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @journal.name
+p
+  strong Avatar:
+  = @journal.avatar
+p
+  strong Priority:
+  = @journal.priority
+p
+  strong Integer:
+  = @journal.integer
+
+= link_to 'Edit', edit_journal_path(@journal)
+'|
+= link_to 'Back', journals_path

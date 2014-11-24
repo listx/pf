@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :users
+  resources :journals
+  resources :notes
+  resources :attachments
 
   get 'sessions/new'
 

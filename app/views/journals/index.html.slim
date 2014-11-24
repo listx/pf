@@ -1,0 +1,27 @@
+h1 Listing journals
+
+table
+  thead
+    tr
+      th Name
+      th Avatar
+      th Priority
+      th Integer
+      th
+      th
+      th
+
+  tbody
+    - @journals.each do |journal|
+      tr
+        td = journal.name
+        td = journal.avatar
+        td = journal.priority
+        td = journal.integer
+        td = link_to 'Show', journal
+        td = link_to 'Edit', edit_journal_path(journal)
+        td = link_to 'Destroy', journal, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Journal', new_journal_path

@@ -1,0 +1,21 @@
+= form_for @journal do |f|
+  - if @journal.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@journal.errors.count, "error")} prohibited this journal from being saved:"
+      ul
+        - @journal.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :avatar
+    = f.text_field :avatar
+  .field
+    = f.label :priority
+    = f.text_field :priority
+  .field
+    = f.label :integer
+    = f.text_field :integer
+  .actions = f.submit 'Save'
