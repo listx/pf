@@ -1,13 +1,13 @@
 - if !@journals.empty?
   h1 Listing journals
 
-  table
+  table.list-model
     thead
       tr
         th Name
         th Avatar
+        th Avatar Filetype
         th Priority
-        th Integer
         th
         th
         th
@@ -16,9 +16,9 @@
       - @journals.each do |journal|
         tr
           td = journal.name
-          td = journal.avatar
-          td = journal.priority
-          td = journal.integer
+          td = nil_na(journal.avatar)
+          td = BINARY_TYPES_HASH[journal.avatar_type]
+          td = nil_na(journal.priority)
           td = link_to 'Show', journal
           td = link_to 'Edit', edit_journal_path(journal)
           td = link_to 'Destroy', journal, data: {:confirm => 'Are you sure?'}, :method => :delete

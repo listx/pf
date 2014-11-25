@@ -1,17 +1,18 @@
-p#notice = notice
-
 p
-  strong Name:
+  strong Name:&nbsp;
   = @journal.name
 p
-  strong Avatar:
-  = @journal.avatar
+  strong Avatar:&nbsp;
+  = nil_na(@journal.avatar)
 p
-  strong Priority:
-  = @journal.priority
+  strong Avatar Filetype:&nbsp;
+  - if @journal.avatar_type.nil?
+    | N/A
+  - else
+    img src=""
 p
-  strong Integer:
-  = @journal.integer
+  strong Priority:&nbsp;
+  = nil_na(@journal.priority)
 
 = link_to 'Edit', edit_journal_path(@journal)
 '|
