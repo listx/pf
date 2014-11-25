@@ -1,4 +1,4 @@
-class ValidateBinaryTypesRange < ActiveModel::Validator
+class VldBinaryTypesRange < ActiveModel::Validator
   def validate(record)
     bt = record.send(options[:binary_types_key])
     if !bt.nil? && (bt < 0 || bt > (BINARY_TYPES_HASH.size - 1))

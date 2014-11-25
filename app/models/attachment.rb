@@ -10,5 +10,5 @@ class Attachment
   field :content, type: BSON::Binary
   field :content_type, type: Integer
 
-  validates_with ValidateBinaryTypesRange, binary_types_key: :content_type
+  validates_with VldBinaryTypesRange, binary_types_key: :content_type
 end

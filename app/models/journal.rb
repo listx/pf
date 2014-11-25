@@ -16,7 +16,7 @@ class Journal
   field :priority, type: Integer, default: 0
 
   validates_presence_of :name
-  validates_with ValidateBinaryTypesRange, binary_types_key: :avatar_type
+  validates_with VldBinaryTypesRange, binary_types_key: :avatar_type
 
   def init
     if self.avatar.blank?
