@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Create development user for testing.
-if ENV["LOOSELEAF_ROOT_USERNAME"].blank?
-  puts "Environment variable `LOOSELEAF_ROOT_USERNAME' cannot be blank."
+if ENV["PF_ROOT_USERNAME"].blank?
+  puts "Environment variable `PF_ROOT_USERNAME' cannot be blank."
   exit
-elsif ENV["LOOSELEAF_ROOT_PASSWORD"].blank?
-  puts "Environment variable `LOOSELEAF_ROOT_PASSWORD' cannot be blank."
+elsif ENV["PF_ROOT_PASSWORD"].blank?
+  puts "Environment variable `PF_ROOT_PASSWORD' cannot be blank."
   exit
 else
-  User.create! name: ENV["LOOSELEAF_ROOT_USERNAME"],
-    password: ENV["LOOSELEAF_ROOT_PASSWORD"]
+  User.create! name: ENV["PF_ROOT_USERNAME"],
+    password: ENV["PF_ROOT_PASSWORD"]
 end
