@@ -29,11 +29,13 @@ class JournalsController < ApplicationController
 
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
+        format.html { redirect_to @journal,\
+          notice: 'Journal was successfully created.' }
         format.json { render :show, status: :created, location: @journal }
       else
         format.html { render :new }
-        format.json { render json: @journal.errors, status: :unprocessable_entity }
+        format.json { render json: @journal.errors,\
+          status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +45,13 @@ class JournalsController < ApplicationController
   def update
     respond_to do |format|
       if @journal.update(journal_params)
-        format.html { redirect_to @journal, notice: 'Journal was successfully updated.' }
+        format.html { redirect_to @journal,\
+          notice: 'Journal was successfully updated.' }
         format.json { render :show, status: :ok, location: @journal }
       else
         format.html { render :edit }
-        format.json { render json: @journal.errors, status: :unprocessable_entity }
+        format.json { render json: @journal.errors,\
+          status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +61,8 @@ class JournalsController < ApplicationController
   def destroy
     @journal.destroy
     respond_to do |format|
-      format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to journals_url,\
+        notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +73,8 @@ class JournalsController < ApplicationController
       @journal = Journal.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white list
+    # through.
     def journal_params
       params.require(:journal).permit(:name, :avatar, :avatar_type, :priority)
     end
