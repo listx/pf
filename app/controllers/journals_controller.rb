@@ -70,6 +70,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:name, :avatar, :priority, :integer)
+      params.require(:journal).permit(:name, :avatar, :avatar_type, :priority)
     end
 end
