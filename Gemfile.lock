@@ -103,6 +103,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    rmagick (2.13.4)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -173,6 +174,7 @@ DEPENDENCIES
   mongoid
   mongoid-grid_fs
   rails (= 4.1.7)
+  rmagick
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

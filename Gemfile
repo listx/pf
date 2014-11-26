@@ -44,6 +44,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 gem 'carrierwave-mongoid'
 gem 'mongoid-grid_fs'
+gem 'rmagick'
 
 group  :test  do
   gem 'rspec-rails'

@@ -12,7 +12,7 @@
     .form-group
       label.control-label for="journal_avatar" Avatar
       br
-      = image_tag @journal.avatar_url
+      = image_tag @journal.avatar_url(:thumb)
       input#journal_avatar name="journal[avatar]" type="file"
   .field
     = f.number_field :priority
