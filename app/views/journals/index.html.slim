@@ -13,15 +13,23 @@
         th
 
     tbody
-      - @journals.each do |journal|
+      - @journals.each do |j|
         tr
-          td = journal.name
-          td = nil_na(journal.avatar.to_s)
-          td = BINARY_TYPES_HASH[journal.avatar_type]
-          td = nil_na(journal.priority)
-          td = link_to 'Show', journal
-          td = link_to 'Edit', edit_journal_path(journal)
-          td = link_to 'Destroy', journal, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = j.name
+          td
+            - if j.avatar.blank?
+              | N/A
+            - else
+              = image_tag j.avatar_url(:thumb)
+          td
+            - if j.avatar_type.nil?
+              | N/A
+            - else
+              = BINARY_TYPES_HASH[j.avatar_type]
+          td = nil_na(j.priority)
+          td = link_to 'Show', j
+          td = link_to 'Edit', edit_journal_path(j)
+          td = link_to 'Destroy', j, data: {:confirm => 'Are you sure?'}, :method => :delete
 
   br
 
