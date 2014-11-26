@@ -3,13 +3,14 @@ p
   = @journal.name
 p
   strong Avatar:&nbsp;
-  = nil_na(@journal.avatar)
+  - if !@journal.avatar.nil?
+    = image_tag @journal.avatar_url
 p
   strong Avatar Filetype:&nbsp;
   - if @journal.avatar_type.nil?
     | N/A
   - else
-    = image_tag @journal.avatar_url
+    = BINARY_TYPES_HASH[@journal.avatar_type]
 p
   strong Priority:&nbsp;
   = nil_na(@journal.priority)

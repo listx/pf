@@ -5,7 +5,7 @@ TEXT_TYPES_HASH = Hash[
   (TEXT_BASIC + TEXT_FILTERED).zip(0.step).map(&:reverse)
   ]
 
-IMAGE_TYPES = %w[gif jpg png]
+IMAGE_TYPES = %w[gif jpeg png].map {|ext| "image/#{ext}"}
 MOVIE_TYPES = %w[avi mpg mpeg mkv ogv]
 SOUND_TYPES = %w[mpg ogg flac]
 BINARY_TYPES_HASH = Hash[
