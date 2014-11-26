@@ -37,7 +37,7 @@ module Pf
     CarrierWave.configure do |c|
       c.storage = :grid_fs
       c.root = Rails.root.join('tmp')
-      c.cache_dir = "uploads"
+      c.cache_dir = "upload-cache"
       c.grid_fs_access_url = "/upload/grid"
     end
   end
