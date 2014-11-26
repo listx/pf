@@ -22,7 +22,9 @@ class Journal
 
   private
     def set_avatar_type
-      ct = self.avatar.file.content_type
-      self.avatar_type = (BINARY_TYPES_HASH.invert[ct] ||= 0)
+      if !self.avatar.file.nil?
+        ct = self.avatar.file.content_type
+        self.avatar_type = (BINARY_TYPES_HASH.invert[ct] ||= 0)
+      end
     end
 end
