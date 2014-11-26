@@ -4,8 +4,6 @@ class Journal
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  after_initialize :init
-
   belongs_to :user
   has_many :notes
   has_many :attachments
@@ -19,10 +17,4 @@ class Journal
   validates_with VldBinaryTypesRange, binary_types_key: :avatar_type
 
   mount_uploader :avatar, ImageUploader
-
-  def init
-    if self.avatar.blank?
-      self.avatar = nil
-    end
-  end
 end
