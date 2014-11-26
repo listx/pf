@@ -1,5 +1,5 @@
 class JournalsController < ApplicationController
-  before_action :set_journal, only: [:show, :edit, :update, :destroy, :avatar]
+  before_action :set_journal, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, except: [:show]
 
   # GET /journals
@@ -64,19 +64,6 @@ class JournalsController < ApplicationController
       format.html { redirect_to journals_url,\
         notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  def avatar
-    content = @journal.avatar.read
-    if stale?(\
-        etag: content,\
-        last_modified: @journal.updated_at.utc,\
-        public: true)
-
-      send_data content,\
-        type: @journal.avatar.file.content_type, disposition: "inline"
-      expires_in 0, public: true
     end
   end
 

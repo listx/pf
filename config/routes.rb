@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   end
   resources :notes
   resources :attachments
-  get '/upload/grid/journal/avatar/:id/:filename' => 'journals#avatar'
+  # We handle GET requests for uploaded files stored by mongodb's GridFs. The
+  # path pattern is '<grid_fs_access_url>/<store_dir>/stored_file'. The
+  # 'grid_fs_access_url' is defined in 'config/application.rb' as
+  # 'CarrierWave.configure.grid_fs_access_url', while the 'store_dir' is defined
+  # as a string in the uploader's class file (as 'def store_dir <STRING> end').
+  get  '/upload/grid/image/:model/:mounted_as/:id/:filename' => 'gridfs#serve'
 
   get 'sessions/new'
 
