@@ -3,7 +3,9 @@ p
   = @journal.name
 p
   strong Avatar:&nbsp;
-  - if !@journal.avatar.nil?
+  - if @journal.avatar.file.nil?
+    | N/A
+  - else
     = image_tag @journal.avatar_url
 p
   strong Avatar Filetype:&nbsp;
