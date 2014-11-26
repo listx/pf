@@ -33,5 +33,12 @@ module Pf
     config.generators.jbuilder = false
     config.sass.preferred_syntax = :sass
     config.time_zone = "Pacific Time (US & Canada)"
+
+    CarrierWave.configure do |c|
+      c.storage = :grid_fs
+      c.root = Rails.root.join('tmp')
+      c.cache_dir = "uploads"
+      c.grid_fs_access_url = "/upload/grid"
+    end
   end
 end

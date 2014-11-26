@@ -43,6 +43,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 gem 'carrierwave-mongoid'
+gem 'mongoid-grid_fs'
 
 group  :test  do
   gem 'rspec-rails'

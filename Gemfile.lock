@@ -171,6 +171,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jquery-rails
   mongoid
+  mongoid-grid_fs
   rails (= 4.1.7)
   rspec-rails
   sass-rails (~> 4.0.3)

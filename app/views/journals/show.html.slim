@@ -9,7 +9,7 @@ p
   - if @journal.avatar_type.nil?
     | N/A
   - else
-    img src=""
+    = image_tag @journal.avatar_url
 p
   strong Priority:&nbsp;
   = nil_na(@journal.priority)

@@ -16,7 +16,7 @@
       - @journals.each do |journal|
         tr
           td = journal.name
-          td = nil_na(journal.avatar)
+          td = nil_na(journal.avatar.to_s)
           td = BINARY_TYPES_HASH[journal.avatar_type]
           td = nil_na(journal.priority)
           td = link_to 'Show', journal

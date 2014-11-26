@@ -11,12 +11,14 @@ class Journal
   has_many :attachments
 
   field :name, type: String
-  field :avatar, type: BSON::Binary, default: nil
+  field :avatar, type: String, default: nil
   field :avatar_type, type: Integer, default: nil
   field :priority, type: Integer, default: 0
 
   validates_presence_of :name
   validates_with VldBinaryTypesRange, binary_types_key: :avatar_type
+
+  mount_uploader :avatar, ImageUploader
 
   def init
     if self.avatar.blank?

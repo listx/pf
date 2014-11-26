@@ -1,4 +1,4 @@
-= bootstrap_form_for @journal do |f|
+= bootstrap_form_for @journal, html: {multipart: true} do |f|
   - if @journal.errors.any?
     #error_explanation
       h2 = "#{pluralize(@journal.errors.count, "error")} prohibited this journal from being saved:"
@@ -9,12 +9,7 @@
   .field
     = f.text_field :name
   .field
-    .form-group
-      label.control-label Avatar
-      br
-      div.btn.btn-default.btn-file
-        | Browse
-        input#journal_avatar type="file" name="journal[avatar]"
+    = f.file_field :avatar
   .field
     = f.number_field :avatar_type
   .field

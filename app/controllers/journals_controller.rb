@@ -1,5 +1,5 @@
 class JournalsController < ApplicationController
-  before_action :set_journal, only: [:show, :edit, :update, :destroy]
+  before_action :set_journal, only: [:show, :edit, :update, :destroy, :avatar]
   before_action :logged_in_user, except: [:show]
 
   # GET /journals
@@ -67,6 +67,19 @@ class JournalsController < ApplicationController
     end
   end
 
+  def avatar
+    content = @journal.avatar.read
+    if stale?(\
+        etag: content,\
+        last_modified: @journal.updated_at.utc,\
+        public: true)
+
+      send_data content,\
+        type: @journal.avatar.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_journal
@@ -76,6 +89,7 @@ class JournalsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list
     # through.
     def journal_params
-      params.require(:journal).permit(:name, :avatar, :avatar_type, :priority)
+      params.require(:journal).permit(\
+        :name, :avatar, :avatar_cache, :avatar_type, :priority)
     end
 end

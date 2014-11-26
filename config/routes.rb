@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :users
-  resources :journals
+  resources :journals do
+    get :avatar, on: :member
+  end
   resources :notes
   resources :attachments
+  get '/upload/grid/journal/avatar/:id/:filename' => 'journals#avatar'
 
   get 'sessions/new'
 
