@@ -15,11 +15,7 @@ class GridfsController < ApplicationController
 
   private
     def set_gridfs_context
-      case params[:model]
-      when 'journal'
-        model_class = Journal
-      end
-      model = model_class.find(params[:id])
+      model = FILE_MODEL_HASH[params[:model]].find(params[:id])
       mount = params[:mounted_as].to_sym
       @last_modified = model.updated_at.utc
 

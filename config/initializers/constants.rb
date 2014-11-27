@@ -5,10 +5,17 @@ TEXT_TYPES_HASH = Hash[
   (TEXT_BASIC + TEXT_FILTERED).zip(0.step).map(&:reverse)
   ]
 
-IMAGE_TYPES = %w[gif jpeg png].map {|ext| "image/#{ext}"}
+def prepends(xs, parent_sym)
+  xs.map {|x| "#{parent_sym.to_s}/#{x}"}
+end
+
+IMAGE_TYPES = prepends(%w[gif jpeg png], :image)
 MOVIE_TYPES = %w[avi mpg mpeg mkv ogv]
 SOUND_TYPES = %w[mpg ogg flac]
+DOCUMENT_TYPES = prepends(%w[pdf], :application)
 BINARY_TYPES_HASH = Hash[
-  (["unknown"] + IMAGE_TYPES + SOUND_TYPES + MOVIE_TYPES)\
+  (["unknown"] + IMAGE_TYPES + SOUND_TYPES + MOVIE_TYPES + DOCUMENT_TYPES)\
   .zip(0.step).map(&:reverse)
   ]
+
+FILE_MODEL_HASH = {'journal' => Journal, 'attachment' => Attachment}
