@@ -1,11 +1,9 @@
-p#notice = notice
-
 p
-  strong Name:
-  = @note.name
+  strong Name:&nbsp;
+  = nil_na @note.name
 p
-  strong Content:
-  = @note.content
+  strong Text:&nbsp;
+  = @note.text
 
 = link_to 'Edit', edit_note_path(@note)
 '|

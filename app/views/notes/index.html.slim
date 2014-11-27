@@ -1,19 +1,17 @@
 - if !@notes.empty?
   h1 Listing notes
-  table
+  table.list-model
     thead
       tr
         th Name
-        th Content
-        th
+        th Text
         th
         th
     tbody
       - @notes.each do |note|
         tr
-          td = note.name
-          td = note.content
-          td = link_to 'Show', note
+          td = nil_na note.name
+          td = link_to note.text, note
           td = link_to 'Edit', edit_note_path(note)
           td = link_to 'Destroy', note, data: {:confirm => 'Are you sure?'}, :method => :delete
   br

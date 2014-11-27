@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user
+  before_action :logged_in_user, except: [:show]
 
   # GET /notes
   # GET /notes.json
@@ -58,7 +58,7 @@ class NotesController < ApplicationController
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { head :no_text }
     end
   end
 
@@ -70,6 +70,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:name, :content)
+      params.require(:note).permit(:name, :text, :text_type)
     end
 end

@@ -45,6 +45,7 @@ gem 'bootstrap_form'
 gem 'carrierwave-mongoid'
 gem 'mongoid-grid_fs'
 gem 'rmagick'
+gem 'activecleaner'
 
 group  :test  do
   gem 'rspec-rails'
