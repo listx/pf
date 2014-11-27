@@ -19,7 +19,7 @@ module ApplicationHelper
     file_type = model.send("#{mount_sym.to_s}_type".to_sym)
     file_url = model.send("#{mount_sym.to_s}_url".to_sym)
     if binary_types_group?(file_type, :image)
-      image_tag file_url(:thumb)
+      image_tag file_url
     else
       link_to 'file', file_url
     end
