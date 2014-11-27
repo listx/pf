@@ -1,3 +1,5 @@
+require 'active_model'
+
 class VldBinaryTypesRange < ActiveModel::Validator
   def validate(record)
     bt = record.send(options[:binary_types_key])
