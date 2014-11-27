@@ -1,11 +1,12 @@
-p#notice = notice
-
 p
   strong Name:&nbsp;
   = @attachment.name
 p
   strong File:&nbsp;
-  = binary_file_view(@attachment, :fyle)
+  - if @attachment.fyle.file.nil?
+    | N/A
+  - else
+    = binary_file_view(@attachment, :fyle)
 
 = link_to 'Edit', edit_attachment_path(@attachment)
 '|
