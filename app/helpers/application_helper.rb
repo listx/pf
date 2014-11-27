@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def binary_types_group?(k, sym)
-    BINARY_TYPES_HASH[k] =~ Regexp.new('^#{sym.to_s}\/')
+    BINARY_TYPES_HASH[k] =~ Regexp.new("^#{sym.to_s}\/")
   end
 
   def binary_file_view(model, mount_sym)
