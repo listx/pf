@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  def delete_file_type(model, mount, model_hash)
+  def nullify_mount_type(model, mount, model_hash)
     if model_hash["remove_#{mount.to_s}"] == "1"
       model.send("#{mount.to_s}_type=".to_sym, nil)
       model.save

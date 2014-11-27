@@ -43,7 +43,7 @@ class AttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @attachment.update(attachment_params)
-        delete_file_type(@attachment, :fyle, params["attachment"])
+        nullify_mount_type(@attachment, :fyle, params["attachment"])
         format.html { redirect_to @attachment, notice: 'Attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @attachment }
       else
