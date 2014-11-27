@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
+
+  def delete_file_type(model, mount, model_hash)
+    if model_hash["remove_#{mount.to_s}"] == "1"
+      model.send("#{mount.to_s}_type=".to_sym, nil)
+      model.save
+    end
+  end
 end

@@ -42,11 +42,8 @@ class AttachmentsController < ApplicationController
   # PATCH/PUT /attachments/1.json
   def update
     respond_to do |format|
-      if params["attachment"]["remove_fyle"] == "1"
-        @journal.fyle_type = nil
-        @journal.save
-      end
       if @attachment.update(attachment_params)
+        delete_file_type(@attachment, :fyle, params["attachment"])
         format.html { redirect_to @attachment, notice: 'Attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @attachment }
       else
@@ -74,6 +71,6 @@ class AttachmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attachment_params
-      params.require(:attachment).permit(:name, :fyle, :fyle_acache, :fyle_type)
+      params.require(:attachment).permit(:name, :fyle, :remove_fyle, :fyle_acache, :fyle_type)
     end
 end
