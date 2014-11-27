@@ -8,8 +8,10 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    br
+    = f.text_field :name, size: 80, maxlength: 80
   .field
     = f.label :text
-    = f.text_field :text
+    br
+    = f.text_area :text, cols: 80, rows: 20
   .actions = f.submit 'Save'

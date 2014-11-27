@@ -3,7 +3,9 @@ p
   = nil_na @note.name
 p
   strong Text:&nbsp;
-  = @note.text
+.pf-note-text
+  pre
+    = @note.text
 
 = link_to 'Edit', edit_note_path(@note)
 '|

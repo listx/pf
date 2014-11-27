@@ -12,6 +12,7 @@ class Note
   field :text, type: String
   field :text_type, type: Integer
 
+  validates_length_of :name, maximum: 80
   validates_presence_of :text
   validates_with VldTextTypesRange, text_types_key: :text_type
 end

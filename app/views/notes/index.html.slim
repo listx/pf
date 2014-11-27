@@ -10,8 +10,15 @@
     tbody
       - @notes.each do |note|
         tr
-          td = nil_na note.name
-          td = link_to note.text, note
+          td.mono
+            - if note.name.nil?
+              | N/A
+            - else
+              = simple_format(truncate(note.name, length: 30, separator: ' '))
+          td.mono
+            = link_to \
+              (simple_format(truncate(note.text, length: 30, separator: ' '))),\
+              note
           td = link_to 'Edit', edit_note_path(note)
           td = link_to 'Destroy', note, data: {:confirm => 'Are you sure?'}, :method => :delete
   br
