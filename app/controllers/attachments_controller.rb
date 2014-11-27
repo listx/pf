@@ -1,6 +1,6 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user
+  before_action :logged_in_user, except: [:show]
 
   # GET /attachments
   # GET /attachments.json
@@ -42,6 +42,10 @@ class AttachmentsController < ApplicationController
   # PATCH/PUT /attachments/1.json
   def update
     respond_to do |format|
+      if params["attachment"]["remove_fyle"] == "1"
+        @journal.fyle_type = nil
+        @journal.save
+      end
       if @attachment.update(attachment_params)
         format.html { redirect_to @attachment, notice: 'Attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @attachment }
@@ -70,6 +74,6 @@ class AttachmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attachment_params
-      params.require(:attachment).permit(:name, :content)
+      params.require(:attachment).permit(:name, :fyle, :fyle_acache, :fyle_type)
     end
 end

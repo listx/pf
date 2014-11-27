@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # as a string in the uploader's class file (as 'def store_dir <STRING> end').
   get  '/upload/grid/image/:model/:mounted_as/:id/:filename' => 'gridfs#serve'
 
+  get  '/upload/grid/file/:model/:mounted_as/:id/:filename' => 'gridfs#serve'
+
   get 'sessions/new'
 
   root 'welcome#index'

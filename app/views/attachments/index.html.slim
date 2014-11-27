@@ -1,23 +1,33 @@
 - if !@attachments.empty?
   h1 Listing attachments
 
-  table
+  table.list-model
     thead
       tr
         th Name
-        th Content
+        th File
+        th Type
         th
         th
         th
 
     tbody
-      - @attachments.each do |attachment|
+      - @attachments.each do |a|
         tr
-          td = attachment.name
-          td = attachment.content
-          td = link_to 'Show', attachment
-          td = link_to 'Edit', edit_attachment_path(attachment)
-          td = link_to 'Destroy', attachment, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = a.name
+          td
+            - if a.fyle.blank?
+              | N/A
+            - else
+              = binary_file_view(a, :fyle)
+          td
+            - if a.fyle_type.nil?
+              | N/A
+            - else
+              = BINARY_TYPES_HASH[a.fyle_type]
+          td = link_to 'Show', a
+          td = link_to 'Edit', edit_attachment_path(a)
+          td = link_to 'Destroy', a, data: {:confirm => 'Are you sure?'}, :method => :delete
 
   br
 

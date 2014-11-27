@@ -1,11 +1,11 @@
 p#notice = notice
 
 p
-  strong Name:
+  strong Name:&nbsp;
   = @attachment.name
 p
-  strong Content:
-  = @attachment.content
+  strong File:&nbsp;
+  = binary_file_view(@attachment, :fyle)
 
 = link_to 'Edit', edit_attachment_path(@attachment)
 '|
