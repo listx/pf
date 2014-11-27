@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  def nullify_mount_type(model, mount, model_hash)
-    if model_hash["remove_#{mount.to_s}"] == "1"
-      model.send("#{mount.to_s}_type=".to_sym, nil)
+  def nullify_mount_type(model, mount_sym, model_hash)
+    if model_hash["remove_#{mount_sym.to_s}"] == "1"
+      model.send("#{mount_sym.to_s}_type=".to_sym, nil)
       model.save
     end
   end
