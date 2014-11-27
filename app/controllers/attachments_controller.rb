@@ -29,6 +29,7 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       if @attachment.save
+        set_mount_type(@attachment, :fyle)
         format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
         format.json { render :show, status: :created, location: @attachment }
       else
@@ -43,7 +44,7 @@ class AttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @attachment.update(attachment_params)
-        nullify_mount_type(@attachment, :fyle, params["attachment"])
+        set_mount_type(@attachment, :fyle, params["attachment"])
         format.html { redirect_to @attachment, notice: 'Attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @attachment }
       else

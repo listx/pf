@@ -7,6 +7,12 @@ p
     | N/A
   - else
     = binary_file_view(@attachment, :fyle)
+p
+  strong Type:&nbsp;
+  - if @attachment.fyle_type.nil?
+    | N/A
+  - else
+    = BINARY_TYPES_HASH[@attachment.fyle_type]
 
 = link_to 'Edit', edit_attachment_path(@attachment)
 '|
