@@ -45,6 +45,10 @@ class JournalsController < ApplicationController
   def update
     respond_to do |format|
       if @journal.update(journal_params)
+        if params["journal"]["remove_avatar"] == "1"
+          @journal.avatar_type = nil
+          @journal.save
+        end
         format.html { redirect_to @journal,\
           notice: 'Journal was successfully updated.' }
         format.json { render :show, status: :ok, location: @journal }
