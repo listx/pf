@@ -77,6 +77,6 @@ class JournalsController < ApplicationController
     # through.
     def journal_params
       params.require(:journal).permit(\
-        :name, :avatar, :avatar_cache, :avatar_type, :priority)
+        :name, :avatar, :remove_avatar, :avatar_cache, :avatar_type, :priority)
     end
 end

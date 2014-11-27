@@ -18,6 +18,9 @@
         br
         = image_tag @journal.avatar_url(:thumb)
       input#journal_avatar name="journal[avatar]" type="file"
+  - if !@journal.avatar.blank?
+    .field
+      = f.check_box :remove_avatar
   .field
     = f.number_field :priority
   br
