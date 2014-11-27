@@ -15,7 +15,7 @@ SOUND_TYPES = %w[mpg ogg flac]
 DOCUMENT_TYPES = prepends(%w[pdf], :application)
 BINARY_TYPES_HASH = Hash[
   (["unknown"] + IMAGE_TYPES + SOUND_TYPES + MOVIE_TYPES + DOCUMENT_TYPES)\
-  .zip(0.step).map(&:reverse)
+  .zip(0.step).map(&:reverse)\
   ]
 
 FILE_MODEL_HASH = {'journal' => Journal, 'attachment' => Attachment}
