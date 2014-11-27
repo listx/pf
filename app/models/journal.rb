@@ -9,7 +9,7 @@ class Journal
   has_many :attachments
 
   field :name, type: String
-  field :avatar, type: String, default: nil
+  field :avatar, type: String
   field :avatar_type, type: Integer, default: nil
   field :priority, type: Integer, default: 0
 
