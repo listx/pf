@@ -13,7 +13,7 @@ class Journal
   field :avatar_type, type: Integer, default: nil
   field :priority, type: Integer, default: 0
 
-  before_save :set_avatar_type
+  before_validation :set_avatar_type
 
   validates_presence_of :name
   validates_with VldBinaryTypesRange, binary_types_key: :avatar_type
