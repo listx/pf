@@ -9,12 +9,11 @@
         th Type
         th
         th
-        th
 
     tbody
       - @attachments.each do |a|
         tr
-          td = a.name
+          td = link_to a.name, a
           td
             - if a.fyle.blank?
               | N/A
@@ -25,7 +24,6 @@
               | N/A
             - else
               = BINARY_TYPES_HASH[a.fyle_type]
-          td = link_to 'Show', a
           td = link_to 'Edit', edit_attachment_path(a)
           td = link_to 'Destroy', a, data: {:confirm => 'Are you sure?'}, :method => :delete
 
