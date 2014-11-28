@@ -11,14 +11,14 @@ module ApplicationHelper
     end
   end
 
-  def binary_types_group?(k, sym)
-    BINARY_TYPES_HASH[k] =~ Regexp.new("^#{sym.to_s}\/")
+  def content_rmatch(str, sym)
+    str =~ Regexp.new("^#{sym.to_s}\/")
   end
 
   def binary_file_view(model, mount_sym)
     file_type = model.send("#{mount_sym.to_s}_type".to_sym)
     file_url = model.send("#{mount_sym.to_s}_url".to_sym)
-    if binary_types_group?(file_type, :image)
+    if content_rmatch(BINARY_TYPES_HASH[file_type], :image)
       image_tag file_url
     else
       link_to File.basename(model.send(mount_sym.to_s).to_s), file_url

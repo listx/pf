@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :journals do
     get :avatar, on: :member
+    get :exhibit, on: :member
   end
   resources :notes
   resources :attachments

@@ -46,6 +46,7 @@ gem 'carrierwave-mongoid'
 gem 'mongoid-grid_fs'
 gem 'rmagick'
 gem 'activecleaner'
+gem 'parslet'
 
 group  :test  do
   gem 'rspec-rails'

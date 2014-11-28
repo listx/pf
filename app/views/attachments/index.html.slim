@@ -4,6 +4,7 @@
   table.list-model
     thead
       tr
+        th ID
         th Name
         th File
         th Type
@@ -13,10 +14,21 @@
     tbody
       - @attachments.each do |a|
         tr
+          td.mono
+            = a.id.to_s
           td = link_to a.name, a
           td
             - if a.fyle.blank?
               | N/A
+            - elsif content_rmatch a.fyle.file.content_type, :image
+              / We'd like to have a real thumbnail displayed, but the way
+              / carrierwave works now, we cannot easily do this, as there is no
+              / mechanism to check the file content type from the
+              / CarrierWave::Uploader::Base class. Thus, as we cannot process
+              / thumbnails for attachments (which use the FileUploader, which is
+              / designed to be a generic file uploader), we display the full
+              / image here, but for UI purposes, limit it to 50x50.
+              = image_tag a.fyle_url, size: "50x50"
             - else
               = binary_file_view(a, :fyle)
           td

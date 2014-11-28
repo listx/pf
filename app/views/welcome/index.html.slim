@@ -1,1 +1,4 @@
-p Pf
+p Add links to journals/exhibit actions
+
+- @journals.each do |j|
+  = link_to j.name, controller: "journals", action: "exhibit", id: j.id

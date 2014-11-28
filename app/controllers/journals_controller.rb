@@ -1,6 +1,6 @@
 class JournalsController < ApplicationController
-  before_action :set_journal, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, except: [:show]
+  before_action :set_journal, only: [:show, :edit, :update, :destroy, :exhibit]
+  before_action :logged_in_user, except: [:exhibit]
 
   # GET /journals
   # GET /journals.json
@@ -11,6 +11,12 @@ class JournalsController < ApplicationController
   # GET /journals/1
   # GET /journals/1.json
   def show
+  end
+
+  # GET /journals/1/exhibit
+  def exhibit
+    @render = "SOME RENDERED OUTPUT STRING"
+
   end
 
   # GET /journals/new
@@ -79,6 +85,11 @@ class JournalsController < ApplicationController
     # through.
     def journal_params
       params.require(:journal).permit(\
-        :name, :avatar, :remove_avatar, :avatar_cache, :avatar_type, :priority)
+        :name,\
+        :avatar, :remove_avatar, :avatar_cache, :avatar_type,\
+        :natree,\
+        # we don't include 'rendered', because that parameter is READ-only from the DB
+        :published,\
+        :priority)
     end
 end

@@ -3,6 +3,7 @@
   table.list-model
     thead
       tr
+        th ID
         th Name
         th Text
         th
@@ -10,6 +11,8 @@
     tbody
       - @notes.each do |note|
         tr
+          td.mono
+            = note.id.to_s
           td.mono
             - if note.name.nil?
               | N/A
