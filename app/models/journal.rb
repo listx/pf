@@ -35,7 +35,18 @@ class Journal
 
   mount_uploader :avatar, ImageUploader
 
+  before_validation :standardize_strings
+
   def gen_natree
     result = parse_natree(self.natree)
   end
+
+  private
+
+    def standardize_strings
+      # remove trailing whitespace
+      self.natree.strip!
+      # unixify newlines
+      self.natree.gsub!("\r", "")
+    end
 end
