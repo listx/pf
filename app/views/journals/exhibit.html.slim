@@ -4,4 +4,4 @@ p
   - if !@journal.avatar.file.nil?
     = image_tag @journal.avatar_url
 .journal-render
-  = @render
+  = simple_format(@render)

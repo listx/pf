@@ -1,4 +1,5 @@
 require_relative 'validators.rb'
+require_relative '../../lib/natree_parser.rb'
 
 #class NaTree
 #  attr_accessor :render_chain
@@ -12,6 +13,7 @@ require_relative 'validators.rb'
 class Journal
   include Mongoid::Document
   include Mongoid::Timestamps
+  include JournalHelper
 
   belongs_to :user
   has_many :notes
@@ -36,10 +38,6 @@ class Journal
   mount_uploader :avatar, ImageUploader
 
   before_validation :standardize_strings
-
-  def gen_natree
-    result = parse_natree(self.natree)
-  end
 
   private
 

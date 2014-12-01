@@ -15,4 +15,13 @@ class Note
   validates_length_of :name, maximum: 80
   validates_presence_of :text
   validates_with VldTextTypesRange, text_types_key: :text_type
+
+  before_validation :standardize_strings
+
+  private
+
+    def standardize_strings
+      self.text.strip!
+      self.text.gsub!("\r", "")
+    end
 end

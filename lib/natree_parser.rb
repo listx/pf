@@ -9,21 +9,20 @@ class NatreeParser < ParserHelpers
     # root node (for future extension)
     str("ROOT") >> newline >> newline >>
       # list of node/attachment chains
-      (nachain >> newline).as(:nachain).repeat(1) >>
+      (na_chain >> newline).as(:na_chain).repeat(1).as(:na_chains) >>
       # render call chain
       str("RENDER") >>
-      (str(" ") >> chain_root_name).as(:render_atom).repeat(1) >>
-      # special last newline, as inserted by Vim/Emacs
-      newline
+      (str(" ") >> chain_root_name).as(:render_atom).repeat(1).as(:render_chain)
   end
 
   rule(:chain_root_name) do
     match('[^\\s]').repeat(1).as(:name)
   end
 
-  rule(:nachain) do
+  rule(:na_chain) do
     chain_root_name >> newline >>
-      (bson_object_id >> newline).as(:oid).repeat(1)
+      ((str("n") | str("a")).as(:na_key) >>
+        bson_object_id.as(:oid) >> newline).repeat(1).as(:oids)
   end
 
   # MongoDB's ObjectId type is a 12-byte type. We need exactly 24 hex digits to
@@ -43,10 +42,18 @@ def parse_natree(str)
   rescue Parslet::ParseFailed => failure
     puts failure.cause.ascii_tree
 end
-#	NatreeParserTransform.new.apply(parse_natree(INPUT_STRING))
 
 class NatreeParserTransform < Parslet::Transform
-	rule(name: simple(:x)) do
-		String(x)
-	end
+  rule(render_atom: simple(:x)) do
+    String(x)
+  end
+  rule(name: simple(:x)) do
+    String(x)
+  end
+  rule(na_chain: subtree(:chain)) do
+    x = chain[:oids].map do |oid_hash|
+      [String(oid_hash[:na_key]), String(oid_hash[:oid])]
+    end
+    {name: String(chain[:name]), oids: x}
+  end
 end

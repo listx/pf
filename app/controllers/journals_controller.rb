@@ -1,4 +1,6 @@
 class JournalsController < ApplicationController
+  include JournalHelper
+
   before_action :set_journal, only: [:show, :edit, :update, :destroy, :exhibit]
   before_action :logged_in_user, except: [:exhibit]
 
@@ -15,8 +17,7 @@ class JournalsController < ApplicationController
 
   # GET /journals/1/exhibit
   def exhibit
-    @render = "SOME RENDERED OUTPUT STRING"
-
+    @render = gen_render(@journal.natree)
   end
 
   # GET /journals/new
