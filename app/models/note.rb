@@ -21,7 +21,7 @@ class Note
   private
 
     def standardize_strings
-      self.text.strip!
+      self.text.rstrip!
       self.text.gsub!("\r", "")
     end
 end

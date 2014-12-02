@@ -47,6 +47,7 @@ gem 'mongoid-grid_fs'
 gem 'rmagick'
 gem 'activecleaner'
 gem 'parslet'
+gem 'kramdown'
 
 group  :test  do
   gem 'rspec-rails'

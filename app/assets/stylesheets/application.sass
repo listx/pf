@@ -7,7 +7,7 @@
 
 html
   body
-    font-family: sans-serif
+    font-family: serif
     font-size: 2em
     // The top-padding here determines where the body content starts in the
     // page; without it, the navbar will cover over the contents.
@@ -30,6 +30,13 @@ html
                 textarea
                   font-family: monospace
                   overflow-y: scroll
+          h1#journal-name
+            font-size: 4em
+            text-align: center
+          #typeset
+            width: 600px
+            margin: 5em auto 10em auto
+            text-align: justify
     footer.footer
       z-index: 1001
       position: fixed
@@ -55,3 +62,22 @@ table.list-model
         text-align: center
       td.mono
         font-family: monospace
+.hr
+  padding: 2em
+  text-align: center
+.attachment
+  text-align: center
+//hr.rchain
+//  padding: 0
+//  border: none
+//  border-top: solid #333
+//  color: #333
+//  text-align: center
+//hr.rchain:after
+//  content: "<span class=\"glyphicon glyphicon-leaf\"></span>"
+//  display: inline-block
+//  position: relative
+////  top: -0.7em
+//  font-size: 1.5em
+//  padding: 0 0.25em
+//  background: white

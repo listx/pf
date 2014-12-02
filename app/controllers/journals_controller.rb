@@ -1,4 +1,7 @@
 class JournalsController < ApplicationController
+  # We need to include the TextHelper class because we can use the
+  # 'simple_helper' method from within 'JournalHelper'...?
+  include ActionView::Helpers::TextHelper
   include JournalHelper
 
   before_action :set_journal, only: [:show, :edit, :update, :destroy, :exhibit]

@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery.hypher
+//= require en-us
+//= require hyphenate
 //= require_tree .

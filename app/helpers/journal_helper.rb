@@ -1,6 +1,4 @@
 module JournalHelper
-  include ActionView::Helpers::TextHelper
-
   # Use the '#natree' string to generate a properly-structured HTML-rendered
   # output to store into the database. We could store the AST-like structure
   # of '#natree' in JSON's string representation form, but that involves extra
@@ -8,7 +6,7 @@ module JournalHelper
   def gen_render(natree)
     parsed_hash = parse_natree(natree)
     phash = NatreeParserTransform.new.apply(parsed_hash)
-    render_text = ""
+    render_text = []
 
     na_chains = phash[:na_chains]
     rchain = phash[:render_chain]
@@ -23,7 +21,7 @@ module JournalHelper
     end
 
     # Rendered output string
-    render_text
+    render_text.join("<div class=\"hr\"><span class=\"glyphicon glyphicon-leaf\"></span></div>")
   end
 
   def get_oids(chain_name, na_chains)
@@ -31,15 +29,16 @@ module JournalHelper
   end
 
   def render_oids(oids)
-    output = ""
+    output = []
     oids.each do |obj_type, oid|
       if obj_type == "n"
-        output << ">> #{Note.find(oid).text} <<\n\n"
+        str0 = Note.find(oid).text
+        output << "<div class=\"section\">#{Kramdown::Document.new(str0).to_html.html_safe}</div>\n\n"
       else
-        output << ">> #{Attachment.find(oid).fyle_url} <<\n\n"
+        output << "<div class=\"attachment\"><img src=\"#{Attachment.find(oid).fyle_url}\"></div>\n\n"
       end
     end
 
-    output
+    output.join("<hr>")
   end
 end
