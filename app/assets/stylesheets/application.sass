@@ -51,7 +51,12 @@ html
           margin: 1em 0
           text-align: center
           a
-            color: $color-text-weak
+            color: black
+            opacity: 0.5
+            transition: opacity 0.3s ease-in-out
+          a:hover
+            opacity: 1
+            transition: opacity 0.3s ease-in-out
 table.list-model
   thead
     tr
