@@ -9,7 +9,7 @@ def prepends(xs, parent_sym)
   xs.map {|x| "#{parent_sym.to_s}/#{x}"}
 end
 
-IMAGE_TYPES = prepends(%w[gif jpeg png], :image)
+IMAGE_TYPES = prepends(%w[gif jpeg png svg+xml], :image)
 MOVIE_TYPES = %w[avi mpg mpeg mkv ogv]
 SOUND_TYPES = %w[mpg ogg flac]
 DOCUMENT_TYPES = prepends(%w[pdf], :application)

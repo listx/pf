@@ -19,7 +19,10 @@
             - if j.avatar.blank?
               | N/A
             - else
-              = image_tag j.avatar_url(:thumb)
+              - if j.avatar.file.content_type == "image/svg+xml"
+                = image_tag j.avatar_url
+              - else
+                = image_tag j.avatar_url(:thumb)
           td
             - if j.avatar_type.nil?
               | N/A
