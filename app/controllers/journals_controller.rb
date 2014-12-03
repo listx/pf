@@ -25,7 +25,8 @@ class JournalsController < ApplicationController
 
   # GET /journals/new
   def new
-    @journal = Journal.new
+    @journal = Journal.new\
+      published: true
   end
 
   # GET /journals/1/edit
@@ -35,7 +36,9 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    @journal = Journal.new(journal_params)
+    @journal = Journal.new(journal_params.merge!\
+      user_id: current_user.id
+    )
 
     respond_to do |format|
       if @journal.save
@@ -90,6 +93,7 @@ class JournalsController < ApplicationController
     def journal_params
       params.require(:journal).permit(\
         :name,\
+        :user_id,\
         :avatar, :remove_avatar, :avatar_cache, :avatar_type,\
         :natree,\
         # we don't include 'rendered', because that parameter is READ-only from the DB

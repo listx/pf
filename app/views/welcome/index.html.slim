@@ -3,32 +3,35 @@ ruby:
     n == 0 ? {tag: 'div', class: 'item active'} : {tag: 'div', class: 'item'}
   end
 
-#myCarousel.carousel.slide data-ride="carousel"
-  ol.carousel-indicators
-    - @journals.each do |j, n|
-      - if n == 0
-        li.active data-target="#myCarousel" data-slide-to="#{n}"
-      - else
-        li data-target="#myCarousel" data-slide-to="#{n}"
-  .carousel-inner role="listbox"
-    - @journals.each do |j, n|
-      div class="#{n == 0 ? 'item active' : 'item'}"
-        .container
-          .carousel-caption
-            h1.figure
-              | Fig. #{n + 1}
-            - if !j.avatar_type.nil?
-              = link_to (image_tag j.avatar_url, size: "300x300"),\
+- if @journals.size == 0
+  h1 Nothing to see here.
+- else
+  #myCarousel.carousel.slide data-ride="carousel"
+    ol.carousel-indicators
+      - @journals.each do |j, n|
+        - if n == 0
+          li.active data-target="#myCarousel" data-slide-to="#{n}"
+        - else
+          li data-target="#myCarousel" data-slide-to="#{n}"
+    .carousel-inner role="listbox"
+      - @journals.each do |j, n|
+        div class="#{n == 0 ? 'item active' : 'item'}"
+          .container
+            .carousel-caption
+              h1.figure
+                | Fig. #{n + 1}
+              - if !j.avatar_type.nil?
+                = link_to (image_tag j.avatar_url, size: "300x300"),\
+                    {controller: "journals", action: "exhibit", id: j.id}
+              - else
+                = link_to controller: "journals", action: "exhibit", id: j.id do
+                    span.glyphicon.glyphicon-book.journal-avatar-glyphicon
+              h1
+                = link_to j.name,\
                   {controller: "journals", action: "exhibit", id: j.id}
-            - else
-              = link_to controller: "journals", action: "exhibit", id: j.id do
-                  span.glyphicon.glyphicon-book.journal-avatar-glyphicon
-            h1
-              = link_to j.name,\
-                {controller: "journals", action: "exhibit", id: j.id}
-  a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"
-    span.glyphicon.glyphicon-hand-left aria-hidden="true"
-    span.sr-only Previous
-  a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
-    span.glyphicon.glyphicon-hand-right aria-hidden="true"
-    span.sr-only Next
+    a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"
+      span.glyphicon.glyphicon-hand-left aria-hidden="true"
+      span.sr-only Previous
+    a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
+      span.glyphicon.glyphicon-hand-right aria-hidden="true"
+      span.sr-only Next

@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     jtotal = Journal.all.size
-    @journals = Journal.all.zip(0..(jtotal))
+    @journals = Journal.where(\
+      user_id: User.find_by(name: "root").id, published: true).zip(0..(jtotal))
   end
 end
