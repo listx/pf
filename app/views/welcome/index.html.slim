@@ -1,4 +1,24 @@
-p Add links to journals/exhibit actions
-
 - @journals.each do |j|
   = link_to j.name, controller: "journals", action: "exhibit", id: j.id
+
+#myCarousel.carousel.slide data-ride="carousel"
+  ol.carousel-indicators
+    li.active data-target="#myCarousel" data-slide-to="0"
+    li data-target="#myCarousel" data-slide-to="1"
+  .carousel-inner role="listbox"
+    .item.active
+      .container
+        .carousel-caption
+          h1 Example headline.
+          p Blah blah blah.
+    .item
+      .container
+        .carousel-caption
+          h1 Example headline 22222.
+          p Blah blah blah 22222.
+  a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"
+    span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+    span.sr-only Previous
+  a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
+    span.glyphicon.glyphicon-chevron-right aria-hidden="true"
+    span.sr-only Next

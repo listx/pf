@@ -4,6 +4,7 @@
 @import "dashboard"
 @import "login"
 @import "upload_button"
+@import "carousel"
 
 html
   body
@@ -82,3 +83,9 @@ span.spacer
 //  font-size: 1.5em
 //  padding: 0 0.25em
 //  background: white
+
+// Remove gradients from left/right button areas
+.carousel-control.left, .carousel-control.right
+  background-image: none
+.carousel
+  margin: 50% auto
