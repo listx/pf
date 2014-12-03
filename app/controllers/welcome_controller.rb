@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @journals = Journal.all
+    jtotal = Journal.all.size
+    @journals = Journal.all.zip(0..(jtotal))
   end
 end
