@@ -1,5 +1,12 @@
 footer.footer
   .container
     p.text-muted
-      span.glyphicon.glyphicon-copyright-mark aria-hidden="true"
-      | &nbsp;2014 Linus Arver
+      = link_to root_url
+        span.glyphicon.glyphicon-home
+      span.spacer
+      - if logged_in?
+        = link_to logout_path, method: :delete
+            span.glyphicon.glyphicon-log-out
+      - else
+        = link_to login_path
+            span.glyphicon.glyphicon-flash
