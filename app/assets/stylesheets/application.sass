@@ -4,7 +4,6 @@
 @import "dashboard"
 @import "login"
 @import "upload_button"
-@import "carousel"
 
 $regent-grey: #606c79
 $color-text-weak: $regent-grey
@@ -93,12 +92,16 @@ span.spacer
 .carousel-control.left, .carousel-control.right
   background-image: none
 .carousel
+  height: 500px
   margin: 5em auto 5em 0
   .item
+    height: 500px
+    transition: left 0.6s ease-in-out 0s
     background-color: #fff
     .carousel-caption
       color: $color-text-weak
       text-shadow: none
+      z-index: 10
       h1.figure
         font-style: italic
       a
