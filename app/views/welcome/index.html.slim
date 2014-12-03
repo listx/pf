@@ -17,7 +17,7 @@ ruby:
       - @journals.each do |j, n|
         div class="#{n == 0 ? 'item active' : 'item'}"
           .container
-            .carousel-caption
+            .carousel-caption data-no-turbolink="true"
               h1.figure
                 | Fig. #{n + 1}
               - if !j.avatar_type.nil?
