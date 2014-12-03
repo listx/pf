@@ -7,12 +7,6 @@ ruby:
   h1 Nothing to see here.
 - else
   #myCarousel.carousel.slide data-ride="carousel"
-    ol.carousel-indicators
-      - @journals.each do |j, n|
-        - if n == 0
-          li.active data-target="#myCarousel" data-slide-to="#{n}"
-        - else
-          li data-target="#myCarousel" data-slide-to="#{n}"
     .carousel-inner role="listbox"
       - @journals.each do |j, n|
         div class="#{n == 0 ? 'item active' : 'item'}"
@@ -35,3 +29,9 @@ ruby:
     a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
       span.glyphicon.glyphicon-hand-right aria-hidden="true"
       span.sr-only Next
+    ol.carousel-indicators
+      - @journals.each do |j, n|
+        - if n == 0
+          li.active data-target="#myCarousel" data-slide-to="#{n}"
+        - else
+          li data-target="#myCarousel" data-slide-to="#{n}"
