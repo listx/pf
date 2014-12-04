@@ -1,10 +1,13 @@
-.login-form
-  = bootstrap_form_for(\
-      :session,
-      url: login_path,
-      html: {class: "form-login"}\
-      ) do |f|
-    = f.text_field :name, placeholder: "Username", hide_label: true
-    = f.password_field :password, placeholder: "Password", hide_label: true
-    = f.form_group do
-      = f.submit "Log in", class: "btn btn-lg btn-primary btn-block"
+.hidden
+  .login-form
+    = bootstrap_form_for(\
+        :session,
+        url: login_path,
+        html: {class: "form-login"}\
+        ) do |f|
+      = f.text_field :name, placeholder: "Username", hide_label: true
+      = f.password_field :password, placeholder: "Password", hide_label: true
+      = f.form_group do
+        .button-pf-glyphicon
+          button#pf-glyphicon type="submit" name="commit"
+            = image_tag "man349.svg", size: "60x60", alt: "Log in"
