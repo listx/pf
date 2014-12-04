@@ -25,9 +25,10 @@
       a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
         span.glyphicon.glyphicon-hand-right aria-hidden="true"
         span.sr-only Next
-      .carousel-indicators
-        - @journals.each do |j, n|
-          - if n == 0
-            span.active.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
-          - else
-            span.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
+      .carousel-indicators-wrapper
+        .carousel-indicators
+          - @journals.each do |j, n|
+            - if n == 0
+              span.active.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
+            - else
+              span.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"

@@ -124,25 +124,27 @@ span.spacer
       .journal-avatar-glyphicon
         font-size: 250px
         margin-top: 20px
-  .carousel-indicators
-    position: relative
-    .active
-      background-color: transparent
-      width: 0
-      height: 0
-    .glyphicon-li
-      cursor: pointer
-      display: inline
-      margin: 0 10px
-      border: none
-      color: lighten($color-text-weak, 30%)
-      transition: color 0.3s ease-in-out
-    .glyphicon-li:hover
-      color: black
-      transition: color 0.3s ease-in-out
-    .glyphicon-li.active
-      color: black
-      border: none
+  // Little breadcrumb-like icon-links on bottom of carousel.
+  .carousel-indicators-wrapper
+    .carousel-indicators
+      position: relative
+      .active
+        background-color: transparent
+        width: 0
+        height: 0
+      .glyphicon-li
+        cursor: pointer
+        display: inline
+        margin: 0 10px
+        border: none
+        color: lighten($color-text-weak, 30%)
+        transition: color 0.3s ease-in-out
+      .glyphicon-li:hover
+        color: black
+        transition: color 0.3s ease-in-out
+      .glyphicon-li.active
+        color: black
+        border: none
 .carousel-control:focus
   color: black
 .carousel-control:hover
