@@ -24,4 +24,17 @@ module ApplicationHelper
       link_to File.basename(model.send(mount_sym.to_s).to_s), file_url
     end
   end
+
+  def show_background_img_css_attr
+    case params[:controller]
+    when 'welcome'
+    when 'sessions'
+    when 'journals'
+      if params[:action] != "exhibit"
+        "no-background"
+      end
+    else
+      "no-background"
+    end
+  end
 end
