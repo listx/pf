@@ -29,9 +29,9 @@ ruby:
     a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
       span.glyphicon.glyphicon-hand-right aria-hidden="true"
       span.sr-only Next
-    ol.carousel-indicators
+    .carousel-indicators
       - @journals.each do |j, n|
         - if n == 0
-          li.active data-target="#myCarousel" data-slide-to="#{n}"
+          span.active.glyphicon-li.glyphicon.glyphicon-leaf data-target="#myCarousel" data-slide-to="#{n}"
         - else
-          li data-target="#myCarousel" data-slide-to="#{n}"
+          span.glyphicon-li.glyphicon.glyphicon-leaf data-target="#myCarousel" data-slide-to="#{n}"
