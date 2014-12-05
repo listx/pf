@@ -30,6 +30,9 @@ $(document).ready(function ($) {
 	$("input#session_name, input#session_password").click(function() {
 		$(this).attr("placeholder","");
 	});
+	$("input#session_name, input#session_password").focus(function() {
+		$(this).attr("placeholder","");
+	});
 	$("input#session_name").focusout(function() {
 		$(this).attr("placeholder", placeholder_u);
 	});
