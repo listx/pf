@@ -10,12 +10,8 @@
               .carousel-caption data-no-turbolink="true"
                 h1.figure
                   | Fig. #{n + 1}
-                - if !j.avatar_type.nil?
-                  = link_to (image_tag j.avatar_url, size: "300x300"),\
-                      {controller: "journals", action: "exhibit", id: j.id}
-                - else
-                  = link_to controller: "journals", action: "exhibit", id: j.id do
-                      span.glyphicon.glyphicon-book.journal-avatar-glyphicon
+                = link_to (image_tag (j.avatar_type.nil? ? "question14.svg" : j.avatar_url), class: "journal-avatar-icon"),\
+                    {controller: "journals", action: "exhibit", id: j.id}
                 h1
                   = link_to j.name,\
                     {controller: "journals", action: "exhibit", id: j.id}
