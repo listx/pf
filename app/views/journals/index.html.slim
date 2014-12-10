@@ -8,6 +8,7 @@
         th Avatar
         th Avatar Filetype
         th Priority
+        th Published
         th
         th
 
@@ -29,6 +30,7 @@
             - else
               = BINARY_TYPES_HASH[j.avatar_type]
           td = nil_na(j.priority)
+          td = j.published ? "Y" : "N"
           td = link_to 'Edit', edit_journal_path(j)
           td = link_to 'Destroy', j, data: {:confirm => 'Are you sure?'}, :method => :delete
 
