@@ -28,3 +28,6 @@
               span.active.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
             - else
               span.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
+  - if !@journal_special.nil? && !@journal_special.published
+    .journal-special
+      = raw(@journal_special_render)
