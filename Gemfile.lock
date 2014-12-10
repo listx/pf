@@ -170,25 +170,26 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activecleaner
-  autoprefixer-rails
+  activecleaner (~> 0.2.0)
+  autoprefixer-rails (~> 4.0.0.1)
   bcrypt (~> 3.1.7)
-  bootstrap-sass
-  bootstrap_form
-  bson_ext
-  carrierwave-mongoid
+  bootstrap-sass (~> 3.3.1.0)
+  bootstrap_form (~> 2.2.0)
+  bson_ext (~> 1.5.1)
+  carrierwave-mongoid (~> 0.7.1)
   coffee-rails (~> 4.0.0)
+  font-awesome-sass (~> 4.2.0)
   jquery-rails
-  kramdown
-  mongoid
-  mongoid-grid_fs
-  parslet
+  kramdown (~> 1.5.0)
+  mongoid (~> 4.0.0)
+  mongoid-grid_fs (~> 2.1.0)
+  parslet (~> 1.6.2)
   rails (= 4.1.7)
-  rmagick
+  rmagick (~> 2.13.4)
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  slim-rails
+  slim-rails (~> 2.1.5)
   spring
   turbolinks
   uglifier (>= 1.3.0)
