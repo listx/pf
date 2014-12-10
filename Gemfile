@@ -48,6 +48,7 @@ gem 'rmagick', '~> 2.13.4'
 gem 'activecleaner', '~> 0.2.0'
 gem 'parslet', '~> 1.6.2'
 gem 'kramdown', '~> 1.5.0'
+gem 'font-awesome-sass', '~> 4.2.0'
 
 group  :test  do
   gem 'rspec-rails'

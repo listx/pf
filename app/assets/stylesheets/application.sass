@@ -4,6 +4,8 @@
 @import "dashboard"
 @import "login"
 @import "upload_button"
+@import "font-awesome-sprockets"
+@import "font-awesome"
 
 $regent-grey: #606c79
 $color-text-weak: $regent-grey
@@ -64,13 +66,19 @@ html
       box-shadow: 0 0 20px 5px rgba(0,0,0,0.75)
       .container
         .text-muted
-          margin: 1em 0
+          margin: 10px 0
           text-align: center
           a
             outline: 0
-            color: #888
+            color: white
             transition: color 0.3s ease-in-out
           a:hover
+            color: black
+            transition: color 0.3s ease-in-out
+          .fa-lg
+            color: black
+            transition: color 0.3s ease-in-out
+          .fa-lg:hover
             color: white
             transition: color 0.3s ease-in-out
 table.list-model

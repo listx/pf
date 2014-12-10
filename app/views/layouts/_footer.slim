@@ -1,12 +1,25 @@
 footer.footer
   .container data-no-turbolink="true"
     p.text-muted
-      = link_to root_url
-        span.glyphicon.glyphicon-home
-      span.spacer
+      span.fa-stack.fa-lg
+        = icon('circle', '', class: 'fa-stack-2x')
+        = link_to "mailto:linusarver@gmail.com"
+          = icon('envelope', '', class: 'fa-stack-1x inverse')
+      span.fa-stack.fa-lg
+        = icon('circle', '', class: 'fa-stack-2x')
+        = link_to "http://github.com/listx"
+          = icon('github-alt', '', class: 'fa-stack-1x inverse')
+      span.fa-stack.fa-lg
+        = icon('circle', '', class: 'fa-stack-2x')
+        = link_to root_url
+          = icon('home', '', class: 'fa-stack-1x inverse')
       - if logged_in?
-        = link_to logout_path, method: :delete
-            span.glyphicon.glyphicon-log-out
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to logout_path, method: :delete
+            = icon('sign-out', '', class: 'fa-stack-1x inverse')
       - else
-        = link_to login_path
-            span.glyphicon.glyphicon-flash
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to login_path
+            = icon('sign-in', '', class: 'fa-stack-1x inverse')
