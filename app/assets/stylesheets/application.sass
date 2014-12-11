@@ -10,6 +10,30 @@
 $regent-grey: #606c79
 $color-text-weak: $regent-grey
 
+=responsive-display-font-size($defsize)
+  @media screen and (min-width: 0)
+    font-size: $defsize * 0.8em
+  @media screen and (min-width: $screen-xs)
+    font-size: $defsize * 1em
+  @media screen and (min-width: $screen-sm)
+    font-size: $defsize * 1.3em
+  @media screen and (min-width: $screen-md)
+    font-size: $defsize * 1.6em
+  @media screen and (min-width: $screen-lg)
+    font-size: $defsize * 1.8em
+
+=responsive-carousel-height($defsize)
+  @media screen and (min-width: 0)
+    height: $defsize * 100px
+  @media screen and (min-width: $screen-xs)
+    height: $defsize * 200px
+  @media screen and (min-width: $screen-sm)
+    height: $defsize * 300px
+  @media screen and (min-width: $screen-md)
+    height: $defsize * 400px
+  @media screen and (min-width: $screen-lg)
+    height: $defsize * 500px
+
 html
   body#no-background
     background-image: none
@@ -42,9 +66,12 @@ html
                   font-family: monospace
                   overflow-y: scroll
           .journal-special
-            padding: 30px 25% 120px 25%
-            font-size: 1.5em
+            margin-top: 60px
+            padding: 5% 25%
             text-align: center
+            background-color: rgba(0,0,0,0.1)
+            p
+              +responsive-display-font-size(1)
           h1#journal-name
             font-size: 4em
             text-align: center
@@ -106,11 +133,19 @@ span.spacer
   display: inline-block
   width: 3em
 .carousel
-  padding-top: 25%
+  padding-top: 200px
   width: 100%
   overflow-x: hidden
+  .item.next.left, .item.active.left
+    img
+      transform: rotate(-360deg)
+      transition: all 0.6s ease-in-out
+  .item.prev.right, .item.active.right
+    img
+      transform: rotate(360deg)
+      transition: all 0.6s ease-in-out
   .item
-    height: 500px
+    +responsive-carousel-height(1)
     background-color: transparent
     .carousel-caption:hover
       color: black
@@ -121,7 +156,17 @@ span.spacer
       h1.figure
         font-style: italic
         color: black
+        +responsive-display-font-size(1.4)
+      h1
+        +responsive-display-font-size(1.4)
       img
+        padding: 10px
+        border-style: solid
+        border-width: 10px
+        border-radius: 10px
+        transform: rotate(0deg)
+        // limit maximum size of image
+        max-height: 420px
       a
         display: block
         margin-top: 20px
@@ -132,8 +177,6 @@ span.spacer
       a:hover
         text-decoration: none
         color: black
-        text-shadow: 0px 1px 2px rgba(0,0,0,0.6)
-        transition: text-shadow 0.3s ease-in-out
       .journal-avatar-icon
         font-size: 250px
         margin-top: 20px
@@ -181,8 +224,17 @@ span.spacer
   position: absolute
   top: 66%
   margin: 0 auto
-  font-size: 60px
   z-index: 5
+  @media screen and (min-width: 0)
+    font-size: 1em
+  @media screen and (min-width: $screen-xs)
+    font-size: 1.5em
+  @media screen and (min-width: $screen-sm)
+    font-size: 2em
+  @media screen and (min-width: $screen-md)
+    font-size: 3em
+  @media screen and (min-width: $screen-lg)
+    font-size: 4em
 .glyphicon-hand-right
 .glyphicon-hand-left
 input#session_name.form-control, input#session_password.form-control
