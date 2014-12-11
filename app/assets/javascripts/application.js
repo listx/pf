@@ -39,4 +39,22 @@ $(document).ready(function ($) {
 	$("input#session_password").focusout(function() {
 		$(this).attr("placeholder", placeholder_p);
 	});
+
+	// Make Markdown-rendered subheadings look prettier by prepending them with
+	// glyphicons.
+	$("#typeset h1").wrap("<div class=\"pf-container-h1\"></div>");
+	$("#typeset h2").prepend("<i class=\"fa fa-chevron-circle-right\"></i> ");
+
+	// Carousel: we don't have to hover over the small glyphicon area itself to
+	// trigger the animation of that glyhicon being hovered over; instead,
+	// hovering over the big 'a' element itself is enough to change the
+	// glyphicon colors.
+	$("a.carousel-control").on('mouseenter', function() {
+		$(this).find('.fa-lg').css('color', 'black');
+		$(this).find('i.inverse').css('color', 'white');
+	});
+	$("a.carousel-control").on('mouseleave', function() {
+		$(this).find('.fa-lg').css('color', 'transparent');
+		$(this).find('i.inverse').css('color', 'black');
+	});
 });

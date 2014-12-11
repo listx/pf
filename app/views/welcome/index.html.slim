@@ -16,18 +16,26 @@
                   = link_to j.name,\
                     {controller: "journals", action: "exhibit", id: j.id}
       a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"
-        span.glyphicon.glyphicon-hand-left aria-hidden="true"
-        span.sr-only Previous
+        .vert-spacer
+        .fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = icon('hand-o-left', '', class: 'fa-stack-1x inverse')
       a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
-        span.glyphicon.glyphicon-hand-right aria-hidden="true"
-        span.sr-only Next
+        .vert-spacer
+        .fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = icon('hand-o-right', '', class: 'fa-stack-1x inverse')
       .carousel-indicators-wrapper
         .carousel-indicators
           - @journals.each do |j, n|
             - if n == 0
-              span.active.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
+              span.active.fa-stack.fa-lg data-target="#myCarousel" data-slide-to="#{n}"
+                = icon('circle', '', class: 'fa-stack-2x')
+                = icon('cube', '', class: 'fa-stack-1x inverse')
             - else
-              span.glyphicon-li.glyphicon.glyphicon-file data-target="#myCarousel" data-slide-to="#{n}"
+              span.fa-stack.fa-lg data-target="#myCarousel" data-slide-to="#{n}"
+                = icon('circle', '', class: 'fa-stack-2x')
+                = icon('cube', '', class: 'fa-stack-1x inverse')
   - if !@journal_special.nil? && !@journal_special.published
     .journal-special
       = raw(@journal_special_render)
