@@ -40,6 +40,66 @@ $footer-height: 3.5em
   @media screen and (min-width: $screen-lg)
     height: $defsize * 500px
 
+=responsive-font-size($defsize)
+  h1
+    font-size: $defsize * 2em
+  h2
+    font-size: $defsize * 1.5em
+  h3
+    font-size: $defsize * 1.17em
+  h4
+    font-size: $defsize * 1.12em
+  h5
+    font-size: $defsize * 0.83em
+  h6
+    font-size: $defsize * 0.75em
+  p
+    font-size: $defsize * 1em
+
+=responsive-typeset-text()
+  @media screen and (min-width: 0)
+    width: 300px
+    padding: 0 30px
+    +responsive-font-size(0.7)
+  @media screen and (min-width: $screen-xs)
+    width: $screen-xs
+    padding: 0 40px
+    +responsive-font-size(0.8)
+  @media screen and (min-width: $screen-sm)
+    width: $screen-sm - 40px
+    padding: 0 40px
+    +responsive-font-size(0.9)
+  @media screen and (min-width: $screen-md)
+    width: $screen-lg - 200px
+    padding: 0 60px
+    +responsive-font-size(1)
+  @media screen and (min-width: $screen-lg)
+    width: $screen-lg - 200px
+    padding: 0 60px
+    +responsive-font-size(1)
+
+=responsive-journal-name()
+  @media screen and (min-width: 0)
+    padding: 0.5em 0 0.5em 0
+    font-size: 2em
+    margin-bottom: 0.5em
+  @media screen and (min-width: $screen-xs)
+    padding: 0.5em 0 0.5em 0
+    font-size: 2.5em
+    margin-bottom: 0.5em
+  @media screen and (min-width: $screen-sm)
+    padding: 0.5em 0 0.5em 0
+    font-size: 3em
+    margin-bottom: 0.5em
+  @media screen and (min-width: $screen-md)
+    padding: 0.5em 0 0.25em 0
+    font-size: 4em
+    margin-bottom: 0.5em
+  @media screen and (min-width: $screen-lg)
+    padding: 0.5em 0 0.25em 0
+    font-size: 4em
+    margin-bottom: 0.5em
+
 html
   body#no-background
     background-image: none
@@ -82,17 +142,14 @@ html
             p
               +responsive-display-font-size(1)
           .journal-name h1
-            padding: 0.5em 0 0.25em 0
-            font-size: 4em
+            +responsive-journal-name()
             text-align: center
             color: white
             background-color: black
             margin-top: 0
-            margin-bottom: 0.5em
             box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75)
           #typeset
-            width: 840px
-            padding: 0 60px
+            +responsive-typeset-text()
             margin: 0 auto 10em auto
             text-align: justify
             a
