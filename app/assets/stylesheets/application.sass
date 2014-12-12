@@ -30,13 +30,13 @@ $footer-height: 3.5em
 
 =responsive-carousel-height($defsize)
   @media screen and (min-width: 0)
-    height: $defsize * 100px
+    height: $defsize * 250px
   @media screen and (min-width: $screen-xs)
-    height: $defsize * 200px
+    height: $defsize * 340px
   @media screen and (min-width: $screen-sm)
-    height: $defsize * 300px
+    height: $defsize * 360px
   @media screen and (min-width: $screen-md)
-    height: $defsize * 400px
+    height: $defsize * 420px
   @media screen and (min-width: $screen-lg)
     height: $defsize * 500px
 
@@ -186,6 +186,7 @@ span.spacer
     .carousel-caption:hover
       color: black
     .carousel-caption
+      top: 0
       color: $color-text-weak
       transition: color 0.3s ease-in-out
       text-shadow: none
@@ -214,7 +215,7 @@ span.spacer
         border-radius: 10px
         transform: rotate(0deg)
         // limit maximum size of image
-        max-height: 420px
+        max-width: 280px
       a
         display: block
         margin-top: 20px
