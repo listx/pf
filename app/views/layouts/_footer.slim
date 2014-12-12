@@ -3,27 +3,27 @@ footer.footer
     p.text-muted
       span.fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "mailto:linusarver@gmail.com"
+        = link_to "mailto:linusarver@gmail.com", :'data-toggle' => 'tooltip', :'title' => 'Email'
           = icon('envelope', '', class: 'fa-stack-1x inverse')
       span.fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "http://funloop.org"
+        = link_to "http://funloop.org", :'data-toggle' => 'tooltip', :'title' => 'Blog'
           = icon('newspaper-o', '', class: 'fa-stack-1x inverse')
       span.fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "http://github.com/listx"
+        = link_to "http://github.com/listx", :'data-toggle' => 'tooltip', :'title' => 'Github'
           = icon('github-alt', '', class: 'fa-stack-1x inverse')
       span.fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
-        = link_to root_url
+        = link_to root_url, :'data-toggle' => 'tooltip', :'title' => 'Home'
           = icon('home', '', class: 'fa-stack-1x inverse')
       - if logged_in?
         span.fa-stack.fa-lg
           = icon('circle', '', class: 'fa-stack-2x')
-          = link_to logout_path, method: :delete
+          = link_to logout_path, method: :delete, :'data-toggle' => 'tooltip', :'title' => 'Logout'
             = icon('sign-out', '', class: 'fa-stack-1x inverse')
       - else
         span.fa-stack.fa-lg
           = icon('circle', '', class: 'fa-stack-2x')
-          = link_to login_path
+          = link_to login_path, :'data-toggle' => 'tooltip', :'title' => 'Login'
             = icon('sign-in', '', class: 'fa-stack-1x inverse')

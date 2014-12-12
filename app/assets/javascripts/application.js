@@ -74,4 +74,7 @@ $(document).ready(function ($) {
 	$(".carousel .item").click(function(e) {
 		$(this).find('h1.caption a')[0].click();
 	});
+
+	// Generate all tooltips.
+//	$('[data-toggle="tooltip"]').tooltip();
 });
