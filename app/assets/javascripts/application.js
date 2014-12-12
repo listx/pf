@@ -20,9 +20,6 @@
 //= require_tree .
 
 $(document).ready(function ($) {
-	// Fade-in of everything inside the '.hidden' class.
-	$('div.hidden').fadeIn(1000).removeClass('hidden');
-
 	// Login form placeholder text --- remove upon clicking, and restore upon
 	// losing focus
 	var placeholder_u = $("input#session_name").attr("placeholder");
