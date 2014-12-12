@@ -100,6 +100,34 @@ $footer-height: 3.5em
     font-size: 4em
     margin-bottom: 0.5em
 
+// These are the stacked FontAwesome glyphicons that are displayed against a
+// light background.
+=stacked-faicons-plain()
+  .fa-lg
+    cursor: pointer
+    border: none
+    color: transparent
+    transition: color 0.3s ease-in-out
+  .fa-lg:hover
+    color: black
+    transition: color 0.3s ease-in-out
+  .fa-lg.active
+    color: black
+    background-color: transparent
+    border: none
+    margin: auto
+    // Mirror width/height values from .fa-stack included with FontAwesome
+    width: 2em
+    height: 2em
+    .inverse
+      color: white
+  .inverse
+    color: black
+    transition: color 0.3s ease-in-out
+  .inverse:hover
+    color: white
+    transition: color 0.3s ease-in-out
+
 html
   body#no-background
     background-image: none
@@ -298,30 +326,10 @@ span.spacer
       margin-left: 0
       padding-left: 0
       list-style: disc outside none
-      .fa-lg
-        cursor: pointer
-        border: none
-        color: transparent
-        transition: color 0.3s ease-in-out
-      .fa-lg:hover
-        color: black
-        transition: color 0.3s ease-in-out
-      .fa-lg.active
-        color: black
-        background-color: transparent
-        border: none
-        margin: auto
-        // Mirror width/height values from .fa-stack included with FontAwesome
-        width: 2em
-        height: 2em
-        .inverse
-          color: white
-      .inverse
-        color: black
-        transition: color 0.3s ease-in-out
-      .inverse:hover
-        color: white
-        transition: color 0.3s ease-in-out
+      +stacked-faicons-plain()
+.mini-nav
+  text-align: center
+  +stacked-faicons-plain()
 .carousel-inner
   overflow: visible
 .carousel-control
@@ -329,20 +337,7 @@ span.spacer
   opacity: 1
   .vert-spacer
     height: 66%
-  .fa-lg:hover
-    color: red
-    transition: color 0.3s ease-in-out
-  .fa-lg
-    position: relative
-    z-index: 5
-    color: transparent
-    transition: color 0.3s ease-in-out
-    i.fa.inverse
-      color: black
-      transition: color 0.3s ease-in-out
-    i.fa.inverse:hover
-      color: white
-      transition: color 0.3s ease-in-out
+  +stacked-faicons-plain()
 .carousel-control.left, .carousel-control.right
   background-image: none
   width: 33%

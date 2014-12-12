@@ -1,5 +1,10 @@
 .journal-name
   h1
     = @journal.name
+.mini-nav
+  span.fa-stack.fa-lg
+    = icon('circle', '', class: 'fa-stack-2x')
+    = link_to "#", onclick: "history.back()", class: "nav_link", :'data-toggle' => 'tooltip', :'title' => 'Back'
+      = icon('arrow-left', '', class: 'fa-stack-1x inverse')
 #typeset
   = raw(@render)
