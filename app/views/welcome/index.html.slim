@@ -12,7 +12,7 @@
                   | Fig. #{n + 1}
                 = link_to (image_tag (j.avatar_type.nil? ? "question14.svg" : j.avatar_url), class: "journal-avatar-icon"),\
                     {controller: "journals", action: "exhibit", id: j.id}
-                h1
+                h1.caption
                   = link_to j.name,\
                     {controller: "journals", action: "exhibit", id: j.id}
       a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"

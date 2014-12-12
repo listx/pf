@@ -175,6 +175,7 @@ span.spacer
   .item
     +responsive-carousel-height(1)
     background-color: transparent
+    cursor: pointer
     .carousel-caption:hover
       color: black
     .carousel-caption
@@ -185,7 +186,7 @@ span.spacer
         font-style: italic
         color: black
         +responsive-display-font-size(1.4)
-      h1
+      h1.caption
         +responsive-display-font-size(1.4)
         a
           color: black
@@ -224,7 +225,6 @@ span.spacer
   // Little breadcrumb-like icon-links on bottom of carousel.
   .carousel-indicators-wrapper
     .carousel-indicators
-      cursor: pointer
       position: static
       bottom: auto
       left: auto

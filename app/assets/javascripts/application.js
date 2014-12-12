@@ -57,4 +57,21 @@ $(document).ready(function ($) {
 		$(this).find('.fa-lg').css('color', 'transparent');
 		$(this).find('i.inverse').css('color', 'black');
 	});
+
+	// Carousel: we do the same 'hovering over big element higlights a smaller
+	// one within it' trick here as above, but this time for the journal avatar
+	// image and the journal name.
+	$(".carousel .item").on('mouseenter', function() {
+		$(this).find('h1.caption a').css(
+			{'color':'white', 'background-color':'black'});
+	});
+	$(".carousel .item").on('mouseleave', function() {
+		$(this).find('h1.caption a').css(
+			{'color':'black', 'background-color':'transparent'});
+	});
+	// In the same spirit, allow *clicking* on the main area (anywhere, not just
+	// the journal avatar or caption) link to the journal exhibit page.
+	$(".carousel .item").click(function(e) {
+		$(this).find('h1.caption a')[0].click();
+	});
 });
