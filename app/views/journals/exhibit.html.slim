@@ -4,7 +4,7 @@
 .mini-nav
   span.fa-stack.fa-lg
     = icon('circle', '', class: 'fa-stack-2x')
-    = link_to "#", onclick: "history.back()", class: "nav_link", :'data-toggle' => 'tooltip', :'title' => 'Back'
+    = link_to root_url, :'data-toggle' => 'tooltip', :'title' => 'Back'
       = icon('arrow-left', '', class: 'fa-stack-1x inverse')
 #typeset
   = raw(@render)
