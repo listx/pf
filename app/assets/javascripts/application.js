@@ -41,6 +41,8 @@ $(document).ready(function ($) {
 	// glyphicons.
 	$("#typeset h1").wrap("<div class=\"pf-container-h1\"></div>");
 	$("#typeset h2").prepend("<i class=\"fa fa-chevron-circle-right\"></i> ");
+	// Add separator line before footnotes.
+	$("#typeset .footnotes").prepend("<hr class=\"thick\">");
 
 	// Carousel: we don't have to hover over the small glyphicon area itself to
 	// trigger the animation of that glyhicon being hovered over; instead,
