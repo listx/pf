@@ -21,7 +21,7 @@ module JournalHelper
     end
 
     # Rendered output string
-    render_text.join("<div class=\"hr\"><span class=\"glyphicon glyphicon-leaf\"></span></div>")
+    render_text.join("<hr class=\"thick tallmargin\">")
   end
 
   def get_oids(chain_name, na_chains)
@@ -39,6 +39,6 @@ module JournalHelper
       end
     end
 
-    output.join("<hr>")
+    output.join("\n\n")
   end
 end
