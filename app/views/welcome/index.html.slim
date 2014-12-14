@@ -38,3 +38,15 @@
 - if !@journal_special.nil? && !@journal_special.published
   .journal-special
     = raw(@journal_special_render)
+
+.attribution
+  ' Copyright #{"\u00a9"} 2014 - Linus Arver.
+  br
+  br
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+  br
+  ' Icons made by Freepik from
+  => link_to "www.flaticon.com", "http://www.flaticon.com", title: "Flaticon"
+  ' is licensed by
+  => link_to "CC BY 3.0", "http://creativecommons.org/licenses/by/3.0/",
+    title: "Creative Commons BY 3.0"
