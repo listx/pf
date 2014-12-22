@@ -1,7 +1,7 @@
 - if @jtotal == 0
   h1 Nothing to see here.
 - else
-  #myCarousel.carousel.slide data-ride="carousel"
+  #carousel.carousel.slide data-ride="carousel"
     .carousel-inner role="listbox"
       - @journals.each do |j, n|
         div class="#{n == 0 ? 'item active' : 'item'}"
@@ -14,12 +14,12 @@
               h1.caption
                 = link_to j.name,\
                   {controller: "journals", action: "exhibit", id: j.id}
-    a.left.carousel-control href="#myCarousel" role="button" data-slide="prev"
+    a.left.carousel-control href="#carousel" role="button" data-slide="prev"
       .vert-spacer
       .fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
         = icon('hand-o-left', '', class: 'fa-stack-1x inverse')
-    a.right.carousel-control href="#myCarousel" role="button" data-slide="next"
+    a.right.carousel-control href="#carousel" role="button" data-slide="next"
       .vert-spacer
       .fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
@@ -28,11 +28,11 @@
       .carousel-indicators
         - @journals.each do |j, n|
           - if n == 0
-            span.active.fa-stack.fa-lg data-target="#myCarousel" data-slide-to="#{n}"
+            span.active.fa-stack.fa-lg data-target="#carousel" data-slide-to="#{n}"
               = icon('circle', '', class: 'fa-stack-2x')
               = icon('cube', '', class: 'fa-stack-1x inverse')
           - else
-            span.fa-stack.fa-lg data-target="#myCarousel" data-slide-to="#{n}"
+            span.fa-stack.fa-lg data-target="#carousel" data-slide-to="#{n}"
               = icon('circle', '', class: 'fa-stack-2x')
               = icon('cube', '', class: 'fa-stack-1x inverse')
 - if !@journal_special.nil? && !@journal_special.published
