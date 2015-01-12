@@ -1,22 +1,26 @@
 footer.footer
   .container data-no-turbolink="true"
     p.text-muted
-      span.fa-stack.fa-lg
-        = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "mailto:linusarver@gmail.com", :'data-toggle' => 'tooltip', :'title' => 'Email'
-          = icon('envelope', '', class: 'fa-stack-1x inverse')
-      span.fa-stack.fa-lg
-        = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "http://funloop.org", :'data-toggle' => 'tooltip', :'title' => 'Blog'
-          = icon('pencil', '', class: 'fa-stack-1x inverse')
-      span.fa-stack.fa-lg
-        = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "http://github.com/listx", :'data-toggle' => 'tooltip', :'title' => 'Github'
-          = icon('github-alt', '', class: 'fa-stack-1x inverse')
-      span.fa-stack.fa-lg
-        = icon('circle', '', class: 'fa-stack-2x')
-        = link_to "http://www.linkedin.com/in/linusarver", :'data-toggle' => 'tooltip', :'title' => 'LinkedIn'
-          = icon('linkedin', '', class: 'fa-stack-1x inverse')
+      - if !@ruser.email.nil?
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to "mailto:#{@ruser.email}", :'data-toggle' => 'tooltip', :'title' => 'Email'
+            = icon('envelope', '', class: 'fa-stack-1x inverse')
+      - if !@ruser.blog.nil?
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to "http://#{@ruser.blog}", :'data-toggle' => 'tooltip', :'title' => 'Blog'
+            = icon('pencil', '', class: 'fa-stack-1x inverse')
+      - if !@ruser.github.nil?
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to "http://github.com/#{@ruser.github}", :'data-toggle' => 'tooltip', :'title' => 'Github'
+            = icon('github-alt', '', class: 'fa-stack-1x inverse')
+      - if !@ruser.linkedin.nil?
+        span.fa-stack.fa-lg
+          = icon('circle', '', class: 'fa-stack-2x')
+          = link_to "http://www.linkedin.com/in/#{@ruser.linkedin}", :'data-toggle' => 'tooltip', :'title' => 'LinkedIn'
+            = icon('linkedin', '', class: 'fa-stack-1x inverse')
       span.fa-stack.fa-lg
         = icon('circle', '', class: 'fa-stack-2x')
         = link_to root_url, :'data-toggle' => 'tooltip', :'title' => 'Home'

@@ -37,4 +37,8 @@ module ApplicationHelper
       "no-background"
     end
   end
+
+  def name_or_namereal
+    @ruser.name_real.nil? ? @ruser.name : @ruser.name_real
+  end
 end

@@ -1,11 +1,41 @@
-p#notice = notice
-
 p
   strong Name:
+  '
   = @user.name
 p
   strong Password:
-  = @user.password
+  '
+  ' *secret*
+- if !@user.name_real.nil?
+  p
+    strong Real name:
+    '
+    = @user.name_real
+- if !@user.email.nil?
+  p
+    strong Email:
+    '
+    = @user.email
+- if !@user.blog.nil?
+  p
+    strong Blog:
+    '
+    = @user.blog
+- if !@user.github.nil?
+  p
+    strong Github:
+    '
+    = @user.github
+- if !@user.linkedin.nil?
+  p
+    strong LinkedIn:
+    '
+    = @user.linkedin
+- if !@user.linkedin.nil?
+  p
+    strong Copyright notice:
+    '
+    = @user.copyright
 
 = link_to 'Edit', edit_user_path(@user)
 '|

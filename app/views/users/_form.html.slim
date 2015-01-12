@@ -8,8 +8,35 @@
 
   .field
     = f.label :name
+    '
     = f.text_field :name
-  .field
+  // TODO: make password-changing dependent on knowledge of existing password
+  //.field
     = f.label :password
-    = f.text_field :password
+    '
+    = f.password_field :password_digest
+  .field
+    = f.label :real_name
+    '
+    = f.text_field :name_real
+  .field
+    = f.label :email
+    '
+    = f.text_field :email
+  .field
+    = f.label :blog
+    '
+    = f.text_field :blog
+  .field
+    = f.label :github
+    '
+    = f.text_field :github
+  .field
+    = f.label :linkedin
+    '
+    = f.text_field :linkedin
+  .field
+    = f.label :copyright
+    '
+    = f.text_field :copyright
   .actions = f.submit 'Save'
